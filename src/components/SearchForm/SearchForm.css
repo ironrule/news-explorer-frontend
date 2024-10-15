@@ -1,0 +1,59 @@
+.searchform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 608px;
+  margin: auto;
+}
+
+.searchform__text {
+  color: white;
+  font-size: 60px;
+  line-height: 64px;
+  margin: 80px 0 32px;
+  font-family: "Roboto-Slab-400";
+}
+
+.searchform__description {
+  color: white;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Roboto-400";
+}
+
+.searchform__bar {
+  display: flex;
+  align-items: center;
+  margin: 88px 0 0 0;
+  max-width: 608px;
+  position: relative;
+}
+
+.searchform__textbar::placeholder {
+  color: rgba(182, 188, 191, 1);
+}
+
+.searchform__textbar {
+  width: 608px;
+  height: 64px;
+  border-radius: 100px;
+  border: none;
+  font-size: 16px;
+  line-height: 22px;
+  font-family: "Roboto-400";
+  padding-left: 24px;
+}
+
+.searchform__btn {
+  position: absolute;
+  right: 1px;
+  top: 1px;
+  height: 64px;
+  width: 168px;
+  margin: 0;
+  border-radius: 100px;
+  border: none;
+  color: white;
+  background-color: rgba(47, 113, 229, 1);
+  font-family: "Roboto-500";
+}
