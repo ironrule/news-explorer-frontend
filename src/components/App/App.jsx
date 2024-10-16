@@ -7,6 +7,7 @@ import Footer from "../Footer/Footer";
 import Navigation from "../Navigation/Navigation";
 import Preloader from "../Preloader/Preloader";
 import SearchForm from "../SearchForm/SearchForm";
+import About from "../About/About";
 import NewsPage from "../NewsPage/NewsPage";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
@@ -85,6 +86,7 @@ function App() {
             handleLoginClick={handleLoginClick}
           />
           <SearchForm handleSubmit={handleSubmit} />
+          <About />
           <Routes>
             <Route
               path="/"

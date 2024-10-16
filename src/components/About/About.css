@@ -1,0 +1,29 @@
+.about {
+  display: flex;
+  gap: 56px;
+  margin-top: 80px;
+  background-color: white;
+}
+
+.about__logo {
+  border-radius: 100%;
+  width: 464px;
+  height: 464px;
+  margin-left: 104px;
+}
+
+.about__text {
+  max-width: 600px;
+}
+
+.about__header {
+  font-family: "Roboto-Slab-400";
+  font-size: 40px;
+  line-height: 46px;
+}
+
+.about__description {
+  font-family: "Roboto-400";
+  font-size: 18px;
+  line-height: 24px;
+}

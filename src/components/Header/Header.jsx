@@ -1,4 +1,5 @@
 import logo from "../../assets/logowhite.svg";
+import logoutImage from "../../assets/logout.svg";
 import React, { useContext } from "react";
 import { Link } from "react-router-dom";
 import "./Header.css";
@@ -6,11 +7,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 
 function Header({ handleLoginClick }) {
   const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
-  const noAvatar = Array.from(currentUser.name)[0];
-  const currentDate = new Date().toLocaleString("default", {
-    month: "long",
-    day: "numeric",
-  });
+  const firstName = currentUser.name.split(" ").slice(0, -1);
 
   return (
     <header className="header">
@@ -24,26 +21,42 @@ function Header({ handleLoginClick }) {
       <div className="header__right">
         {isLoggedIn ? (
           <>
-            <Link to="/profile">
-              <div className="header__user-container">
-                <p className="header__username">{currentUser?.name}</p>
-                {currentUser.avatar ? (
-                  <img
-                    src={currentUser?.avatar}
-                    alt={currentUser?.name}
-                    className="header__avatar"
-                  />
-                ) : (
-                  <p className="header__no-avatar">{noAvatar}</p>
-                )}
-              </div>
+            <Link to="/">
+              <button
+                type="button"
+                className="header__text-btn header__text-btn-home"
+              >
+                Home
+              </button>
             </Link>
+            <button
+              type="button"
+              className="header__text-btn header__text-btn-articles"
+            >
+              Saved articles
+            </button>
+            <button
+              type="button"
+              className="header__text-btn header__text-btn-user"
+            >
+              {firstName}{" "}
+              <img
+                src={logoutImage}
+                alt="Logout button"
+                className="header__logout"
+              />
+            </button>
           </>
         ) : (
           <>
-            <button type="button" className="header__text-btn">
-              Home
-            </button>
+            <Link to="/">
+              <button
+                type="button"
+                className="header__text-btn header__text-btn-home"
+              >
+                Home
+              </button>
+            </Link>
             <button
               onClick={handleLoginClick}
               type="button"
