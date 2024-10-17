@@ -1,31 +1,42 @@
 import React, { useEffect, useState } from "react";
-import { Routes, Route, Navigate, useNavigate } from "react-router-dom";
+import {
+  Routes,
+  Route,
+  Navigate,
+  useNavigate,
+  useLocation,
+} from "react-router-dom";
 import "./App.css";
 import Header from "../Header/Header";
-import Main from "../Main/Main";
 import Footer from "../Footer/Footer";
 import Navigation from "../Navigation/Navigation";
 import Preloader from "../Preloader/Preloader";
 import SearchForm from "../SearchForm/SearchForm";
 import About from "../About/About";
-import NewsPage from "../NewsPage/NewsPage";
+import NewsResults from "../NewsResults/NewsResults";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
+import RegisterSuccessModal from "../RegisterSuccessModal/RegisterSuccessModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+import { ArticleContext } from "../../contexts/ArticleContext";
+import { getToken, removeToken } from "../../utils/token.js";
+import * as auth from "../../utils/auth";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
   const [selectedCard, setSelectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({
     _id: "",
-    name: "",
+    username: "",
     email: "",
-    avatar: "",
   });
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
+  const [articles, setArticles] = useState([]);
   const navigate = useNavigate();
+
+  const path = useLocation().pathname.slice(1);
 
   const handleLoginClick = () => {
     setActiveModal("login-modal");
@@ -45,23 +56,24 @@ function App() {
     setActiveModal("register-modal");
   };
 
-  // useEffect(() => {
-  //   const token = getToken();
-  //   if (!token) {
-  //     return;
-  //   }
-  //   getUserInfo(token)
-  //     .then((user) => {
-  //       setCurrentUser(user);
-  //       setIsLoggedIn(true);
-  //     })
-  //     .catch(console.error);
-  // }, [isLoggedIn]);
-
   const handleCardClick = (card) => {
     setActiveModal("item-modal");
     setSelectedCard(card);
   };
+
+  useEffect(() => {
+    const token = getToken();
+    if (!token) {
+      return;
+    }
+    auth
+      .getUserInfo(token)
+      .then((user) => {
+        setCurrentUser(user);
+        setIsLoggedIn(true);
+      })
+      .catch(console.error);
+  }, [isLoggedIn]);
 
   /**============================================
    *          Universal Submit Handler
@@ -79,53 +91,67 @@ function App() {
     <CurrentUserContext.Provider
       value={{ currentUser, isLoggedIn, setIsLoggedIn, setCurrentUser }}
     >
-      <div className="page">
+      <div className={path === "profile" ? "page page-dark" : "page"}>
         <div className="page__content">
-          <Header
-            handleRegisterClick={handleRegisterClick}
-            handleLoginClick={handleLoginClick}
-          />
-          <SearchForm handleSubmit={handleSubmit} />
-          <About />
           <Routes>
             <Route
               path="/"
-              element={<Main handleCardClick={handleCardClick} />}
+              element={
+                <>
+                  <Header
+                    theme=""
+                    handleLoginClick={handleLoginClick}
+                    handleLogout={handleLogout}
+                  />
+                  <SearchForm handleSubmit={handleSubmit} />
+                  <NewsResults />
+                  <About />
+                  <Footer />
+                </>
+              }
             />
             <Route
-              path="/news"
+              path="/profile"
               element={
-                <NewsPage
-                  handleCardClick={handleCardClick}
-                  handleLogout={handleLogout}
-                />
+                <>
+                  <Header
+                    theme="profile"
+                    handleLoginClick={handleLoginClick}
+                    handleLogout={handleLogout}
+                  />
+                  <Footer />
+                </>
               }
             />
             <Route path="*" element={<Navigate to="/" replace />} />
           </Routes>
-          <Footer />
         </div>
-        <LoginModal
-          isOpen={activeModal === "login-modal"}
-          handleClose={closeActiveModal}
-          onRegisterClick={handleRegisterClick}
-          buttonText={isLoading ? "Logging In..." : "Log In"}
-          handleSubmit={handleSubmit}
-        />
-        <RegisterModal
-          isOpen={activeModal === "register-modal"}
-          handleClose={closeActiveModal}
-          onLoginClick={handleLoginClick}
-          buttonText={isLoading ? "Wait..." : "Next"}
-          handleSubmit={handleSubmit}
-        />
-        <EditProfileModal
-          isOpen={activeModal === "edit-profile-modal"}
-          handleClose={closeActiveModal}
-          buttonText={isLoading ? "Wait..." : "Save changes"}
-          handleSubmit={handleSubmit}
-        />
       </div>
+      <LoginModal
+        isOpen={activeModal === "login-modal"}
+        handleClose={closeActiveModal}
+        onRegisterClick={handleRegisterClick}
+        buttonText={isLoading ? "Signing in..." : "Sign in"}
+        handleSubmit={handleSubmit}
+      />
+      <RegisterModal
+        isOpen={activeModal === "register-modal"}
+        handleClose={closeActiveModal}
+        onLoginClick={handleLoginClick}
+        buttonText={isLoading ? "Wait..." : "Sign up"}
+        handleSubmit={handleSubmit}
+      />
+      <RegisterSuccessModal
+        isOpen={activeModal === "register-success-modal"}
+        handleClose={closeActiveModal}
+        onLoginClick={handleLoginClick}
+      />
+      <EditProfileModal
+        isOpen={activeModal === "edit-profile-modal"}
+        handleClose={closeActiveModal}
+        buttonText={isLoading ? "Wait..." : "Save changes"}
+        handleSubmit={handleSubmit}
+      />
     </CurrentUserContext.Provider>
   );
 }

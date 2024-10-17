@@ -1,7 +1,2 @@
 @import url(./vendor/normalize.css);
 @import url(./vendor/fonts.css);
-
-:root {
-  background: white no-repeat url("./assets/headerbg.png");
-  max-width: 1440px;
-}

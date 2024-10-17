@@ -1,0 +1,8 @@
+.page {
+  background: white no-repeat url("../../assets/headerbg.png");
+  max-width: 1440px;
+}
+
+.page-dark {
+  background: none;
+}

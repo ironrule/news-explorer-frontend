@@ -1,7 +1,7 @@
 import "./Main.css";
 import { useContext } from "react";
 
-function Main({ weatherData, handleCardClick }) {
+function Main({ handleCardClick }) {
   return (
     <main>
       <section className="cards">

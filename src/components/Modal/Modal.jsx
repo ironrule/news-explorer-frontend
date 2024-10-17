@@ -30,3 +30,5 @@ export const Modal = ({ children, title, isOpen, handleClose }) => {
     </div>
   );
 };
+
+export default Modal;

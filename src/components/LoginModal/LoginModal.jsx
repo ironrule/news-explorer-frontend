@@ -1,3 +1,122 @@
-function LoginModal() {}
+import React, { useContext, useEffect } from "react";
+import { useNavigate } from "react-router-dom";
+import { Modal } from "../Modal/Modal.jsx";
+import { useForm } from "../../hooks/useForm";
+import "./LoginModal.css";
+import * as auth from "../../utils/auth";
+import { setToken } from "../../utils/token.js";
+import { CurrentUserContext } from "../../contexts/CurrentUserContext";
+
+const LoginModal = ({
+  handleSubmit,
+  isOpen,
+  handleClose,
+  onRegisterClick,
+  buttonText,
+}) => {
+  const navigate = useNavigate();
+  const { setCurrentUser, setIsLoggedIn } = useContext(CurrentUserContext);
+  const initialFormValues = {
+    email: "",
+    password: "",
+  };
+
+  const { formValues, handleFormChange, setFormValues } =
+    useForm(initialFormValues);
+
+  useEffect(() => {
+    if (isOpen) {
+      setFormValues(initialFormValues);
+    }
+  }, [isOpen]);
+
+  const handleLoginSubmit = (e) => {
+    e.preventDefault();
+    const makeRequest = () => {
+      if (!formValues.email || !formValues.password) {
+        return Promise.reject("Must provide email and password.");
+      }
+      return auth
+        .authorize(formValues.email, formValues.password)
+        .then((data) => {
+          if (data.token) {
+            setToken(data.token);
+            return auth.getUserInfo(data.token);
+          } else {
+            return Promise.reject("Invalid email or password.");
+          }
+        })
+        .then((user) => {
+          setCurrentUser(user);
+          setIsLoggedIn(true);
+        });
+    };
+    handleSubmit(makeRequest);
+    setFormValues(initialFormValues);
+    navigate("/");
+  };
+
+  return (
+    <Modal title="Sign in" isOpen={isOpen} handleClose={handleClose}>
+      <form
+        className="modal__form"
+        id="login-modal__form"
+        name="modal-form"
+        onSubmit={handleLoginSubmit}
+      >
+        <label htmlFor="login-modal__input-email" className="modal__label">
+          Email
+          <input
+            type="email"
+            className="modal__input"
+            name="email"
+            id="login-modal__input-email"
+            placeholder="Enter email"
+            required
+            minLength="6"
+            maxLength="50"
+            value={formValues.email}
+            onChange={handleFormChange}
+          />
+          <span
+            className="modal__input-error modal__card-error"
+            id="login-modal__input-email-error"
+          ></span>
+        </label>
+        <label htmlFor="login-modal__input-password" className="modal__label">
+          Password
+          <input
+            type="password"
+            className="modal__input"
+            name="password"
+            id="login-modal__input-password"
+            placeholder="Enter password"
+            required
+            minLength="8"
+            maxLength="40"
+            value={formValues.password}
+            onChange={handleFormChange}
+          />
+          <span
+            className="modal__input-error modal__card-error"
+            id="login-modal__input-password-error"
+          ></span>
+        </label>
+        <div className="login-modal__submit-btn">
+          <button type="submit" className="login-modal__submit">
+            {buttonText}
+          </button>
+          <button
+            className="login-modal__register-toggle"
+            onClick={onRegisterClick}
+          >
+            <span className="login-modal__register-toggle-text">or</span> Sign
+            Up
+          </button>
+        </div>
+      </form>
+    </Modal>
+  );
+};
 
 export default LoginModal;

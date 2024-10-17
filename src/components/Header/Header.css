@@ -3,6 +3,7 @@
   align-items: center;
   border-color: white;
   border-bottom: 1px white solid;
+  max-height: 80px;
 }
 
 .header__logo {
@@ -13,6 +14,7 @@
 .header__right {
   margin-left: auto;
   display: flex;
+  align-items: center;
   gap: 42px;
 }
 
@@ -35,7 +37,9 @@
 
 .header__text-btn-home {
   border: none;
+  border-bottom: 2px solid white;
   width: 55px;
+  height: 74px;
   border-radius: 0;
 }
 
@@ -54,4 +58,25 @@
 
 .header__logout {
   width: 24px;
+}
+
+/* Header Dark Text for Profile Page */
+.header-dark {
+  border-color: rgba(26, 27, 34, 1);
+  border-bottom: 1px rgba(26, 27, 34, 1) solid;
+}
+.header__text-btn-dark {
+  border: none;
+  border: 1px solid rgba(26, 27, 34, 1);
+  color: rgba(26, 27, 34, 1);
+}
+.header__text-btn-home-dark {
+  border: none;
+}
+.header__text-btn-articles-dark {
+  border: none;
+  border-bottom: 2px solid rgba(26, 27, 34, 1);
+  width: 125px;
+  height: 74px;
+  border-radius: 0;
 }

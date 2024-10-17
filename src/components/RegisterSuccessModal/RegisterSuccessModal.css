@@ -1,0 +1,8 @@
+.register-success-modal__login-btn {
+  border: none;
+  background-color: white;
+  color: blue;
+  cursor: pointer;
+  font-family: "Inter-400";
+  padding: 0;
+}
