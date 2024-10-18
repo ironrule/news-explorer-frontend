@@ -1,0 +1,32 @@
+.profile {
+  margin: 40px 0;
+  margin-left: 104px;
+}
+.profile__title {
+  font-family: "Roboto-400";
+  color: rgba(26, 27, 34, 0.5);
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 28px;
+}
+.profile__text {
+  font-family: "Roboto-Slab-400";
+  color: rgba(26, 27, 34, 1);
+  font-size: 40px;
+  line-height: 46px;
+  max-width: 530px;
+  margin-bottom: 30px;
+}
+
+.profile__keywords-title {
+  font-family: "Roboto-400";
+  color: rgba(26, 27, 34, 1);
+  font-size: 18px;
+  line-height: 24px;
+}
+.profile__keywords {
+  font-family: "Roboto-700";
+  color: rgba(26, 27, 34, 1);
+  font-size: 18px;
+  line-height: 24px;
+}

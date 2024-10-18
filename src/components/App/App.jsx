@@ -18,6 +18,7 @@ import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import RegisterSuccessModal from "../RegisterSuccessModal/RegisterSuccessModal";
 import EditProfileModal from "../EditProfileModal/EditProfileModal";
+import Profile from "../Profile/Profile";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { ArticleContext } from "../../contexts/ArticleContext";
 import { getToken, removeToken } from "../../utils/token.js";
@@ -119,6 +120,7 @@ function App() {
                     handleLoginClick={handleLoginClick}
                     handleLogout={handleLogout}
                   />
+                  <Profile />
                   <Footer />
                 </>
               }
