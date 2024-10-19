@@ -13,3 +13,9 @@ export const getUserInfo = (token) => {
     });
   });
 };
+
+export const register = (email, password, username) => {
+  return new Promise((resolve, reject) => {
+    resolve({ email, username, token: "a fake token" });
+  });
+};

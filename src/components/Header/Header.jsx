@@ -54,7 +54,16 @@ function Header({ handleLoginClick, handleLogout, theme }) {
                   : "header__text-btn header__text-btn-user"
               }
             >
-              {currentUser.username.split(/(?<=^\S+)\s/)[0]}
+              <Link
+                to="/profile"
+                className={
+                  theme === "profile"
+                    ? "header__username-link-dark"
+                    : "header__username-link"
+                }
+              >
+                {currentUser.username.split(/(?<=^\S+)\s/)[0]}
+              </Link>
               <img
                 onClick={handleLogout}
                 src={theme === "profile" ? logoutBlack : logoutWhite}

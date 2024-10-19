@@ -3,9 +3,8 @@ import { useNavigate } from "react-router-dom";
 import { Modal } from "../Modal/Modal";
 import { useForm } from "../../hooks/useForm";
 import "./RegisterModal.css";
-// import * as auth from "../../utils/auth";
-// import { setToken } from "../../utils/token";
-// import { getUserInfo } from "../../utils/api";
+import * as auth from "../../utils/auth";
+import { setToken } from "../../utils/token";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const RegisterModal = ({
@@ -48,7 +47,7 @@ const RegisterModal = ({
         .then((data) => {
           if (data.token) {
             setToken(data.token);
-            return getUserInfo(data.token);
+            return auth.getUserInfo(data.token);
           } else {
             return Promise.reject("Registration failed.");
           }

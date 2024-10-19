@@ -56,6 +56,11 @@
   gap: 10px;
 }
 
+.header__username-link {
+  color: white;
+  text-decoration: none;
+}
+
 .header__logout {
   width: 24px;
 }
@@ -79,4 +84,8 @@
   width: 125px;
   height: 74px;
   border-radius: 0;
+}
+.header__username-link-dark {
+  color: rgba(26, 27, 34, 1);
+  text-decoration: none;
 }

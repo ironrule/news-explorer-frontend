@@ -92,68 +92,70 @@ function App() {
     <CurrentUserContext.Provider
       value={{ currentUser, isLoggedIn, setIsLoggedIn, setCurrentUser }}
     >
-      <div className={path === "profile" ? "page page-dark" : "page"}>
-        <div className="page__content">
-          <Routes>
-            <Route
-              path="/"
-              element={
-                <>
-                  <Header
-                    theme=""
-                    handleLoginClick={handleLoginClick}
-                    handleLogout={handleLogout}
-                  />
-                  <SearchForm handleSubmit={handleSubmit} />
-                  <NewsResults />
-                  <About />
-                  <Footer />
-                </>
-              }
-            />
-            <Route
-              path="/profile"
-              element={
-                <>
-                  <Header
-                    theme="profile"
-                    handleLoginClick={handleLoginClick}
-                    handleLogout={handleLogout}
-                  />
-                  <Profile />
-                  <Footer />
-                </>
-              }
-            />
-            <Route path="*" element={<Navigate to="/" replace />} />
-          </Routes>
+      <ArticleContext.Provider value={{}}>
+        <div className={path === "profile" ? "page page-dark" : "page"}>
+          <div className="page__content">
+            <Routes>
+              <Route
+                path="/"
+                element={
+                  <>
+                    <Header
+                      theme=""
+                      handleLoginClick={handleLoginClick}
+                      handleLogout={handleLogout}
+                    />
+                    <SearchForm handleSubmit={handleSubmit} />
+                    <NewsResults />
+                    <About />
+                    <Footer />
+                  </>
+                }
+              />
+              <Route
+                path="/profile"
+                element={
+                  <>
+                    <Header
+                      theme="profile"
+                      handleLoginClick={handleLoginClick}
+                      handleLogout={handleLogout}
+                    />
+                    <Profile />
+                    <Footer />
+                  </>
+                }
+              />
+              <Route path="*" element={<Navigate to="/" replace />} />
+            </Routes>
+          </div>
         </div>
-      </div>
-      <LoginModal
-        isOpen={activeModal === "login-modal"}
-        handleClose={closeActiveModal}
-        onRegisterClick={handleRegisterClick}
-        buttonText={isLoading ? "Signing in..." : "Sign in"}
-        handleSubmit={handleSubmit}
-      />
-      <RegisterModal
-        isOpen={activeModal === "register-modal"}
-        handleClose={closeActiveModal}
-        onLoginClick={handleLoginClick}
-        buttonText={isLoading ? "Wait..." : "Sign up"}
-        handleSubmit={handleSubmit}
-      />
-      <RegisterSuccessModal
-        isOpen={activeModal === "register-success-modal"}
-        handleClose={closeActiveModal}
-        onLoginClick={handleLoginClick}
-      />
-      <EditProfileModal
-        isOpen={activeModal === "edit-profile-modal"}
-        handleClose={closeActiveModal}
-        buttonText={isLoading ? "Wait..." : "Save changes"}
-        handleSubmit={handleSubmit}
-      />
+        <LoginModal
+          isOpen={activeModal === "login-modal"}
+          handleClose={closeActiveModal}
+          onRegisterClick={handleRegisterClick}
+          buttonText={isLoading ? "Signing in..." : "Sign in"}
+          handleSubmit={handleSubmit}
+        />
+        <RegisterModal
+          isOpen={activeModal === "register-modal"}
+          handleClose={closeActiveModal}
+          onLoginClick={handleLoginClick}
+          buttonText={isLoading ? "Wait..." : "Sign up"}
+          handleSubmit={handleSubmit}
+        />
+        <RegisterSuccessModal
+          isOpen={activeModal === "register-success-modal"}
+          handleClose={closeActiveModal}
+          onLoginClick={handleLoginClick}
+        />
+        <EditProfileModal
+          isOpen={activeModal === "edit-profile-modal"}
+          handleClose={closeActiveModal}
+          buttonText={isLoading ? "Wait..." : "Save changes"}
+          handleSubmit={handleSubmit}
+        />
+      </ArticleContext.Provider>
     </CurrentUserContext.Provider>
   );
 }
