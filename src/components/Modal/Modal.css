@@ -25,7 +25,8 @@
   line-height: 28.13px;
   cursor: default;
   font-weight: 500;
-  font-family: "Roboto-900";
+  font-family: "Roboto";
+  font-weight: 900;
 }
 
 .modal__close {
@@ -54,15 +55,18 @@
 
 .modal__form {
   display: flex;
+  gap: 31px;
   flex-direction: column;
   width: 100%;
 }
 
 .modal__label {
-  font-family: "Inter-400";
+  font-family: "Inter";
+  font-weight: 400;
   font-size: 12px;
   line-height: 14.52px;
   color: rgba(47, 113, 229, 1);
+  height: 64px;
 }
 
 .modal__legend {
@@ -72,10 +76,6 @@
   padding-bottom: 4px;
 }
 
-.modal__input:first-child {
-  margin-bottom: 31px;
-}
-
 .modal__input {
   display: block;
   border-bottom: 1px solid black;
@@ -83,11 +83,12 @@
   border-right: none;
   border-left: none;
   width: 100%;
-  padding: 0 0 10px 0;
+  padding: 0 0 6px 0;
   max-width: 440px;
   margin-top: 8px;
-  margin-bottom: 0px;
-  font-family: "Inter-400";
+  margin-bottom: 3px;
+  font-family: "Inter";
+  font-weight: 400;
   color: rgba(0, 0, 0, 1);
   font-size: 14px;
   line-height: 16.94px;
@@ -134,13 +135,17 @@
 }
 
 .modal__input-error {
+  font-family: "Inter";
+  font-weight: 400;
   color: red;
+  margin-top: 15px;
   font-size: 12px;
-  opacity: 0;
+  height: 15px;
+  line-height: 14.52px;
   max-width: 350px;
-  max-height: 0px;
+  visibility: hidden;
 }
 
 .modal__error_visible {
-  opacity: 1;
+  visibility: visible;
 }

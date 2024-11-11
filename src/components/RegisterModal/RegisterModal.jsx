@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "../Modal/Modal";
 import { useForm } from "../../hooks/useForm";
@@ -10,31 +10,42 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 const RegisterModal = ({
   isOpen,
   handleClose,
-  handleOutsideClick,
   onLoginClick,
   handleSubmit,
   buttonText,
 }) => {
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const navigate = useNavigate();
   const { setCurrentUser, setIsLoggedIn } = useContext(CurrentUserContext);
-  const initialFormValues = {
+  const initialRegisterFormValues = {
     email: "",
     password: "",
     username: "",
   };
 
-  const { formValues, handleFormChange, setFormValues } =
-    useForm(initialFormValues);
+  const { formValues, handleFormChange, errors, setFormValues } = useForm(
+    initialRegisterFormValues
+  );
+
+  useEffect(() => {
+    const hasErrors = errors.email || errors.password || errors.username;
+    const isFormEmpty =
+      !formValues.email || !formValues.password || !formValues.username;
+    setButtonDisabled(hasErrors || isFormEmpty);
+  }, [formValues, errors]);
 
   useEffect(() => {
     if (isOpen) {
-      setFormValues(initialFormValues);
+      setFormValues(initialRegisterFormValues);
     }
-  }, [isOpen]);
+  }, [isOpen, setFormValues]);
 
   const handleRegisterSubmit = (e) => {
     e.preventDefault();
     const makeRequest = () => {
+      if (!formValues.email || !formValues.username || !formValues.password) {
+        return Promise.reject("Must complete all fields.");
+      }
       return auth
         .register({
           name: formValues.username,
@@ -55,20 +66,20 @@ const RegisterModal = ({
         .then((user) => {
           setCurrentUser(user);
           setIsLoggedIn(true);
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+        .finally(() => {
+          setFormValues(initialRegisterFormValues);
+          navigate("/saved-news");
         });
     };
     handleSubmit(makeRequest);
-    setFormValues(initialFormValues);
-    navigate("/profile");
   };
 
   return (
-    <Modal
-      title="Sign up"
-      isOpen={isOpen}
-      handleClose={handleClose}
-      handleOutsideClick={handleOutsideClick}
-    >
+    <Modal title="Sign up" isOpen={isOpen} handleClose={handleClose}>
       <form
         className="modal__form"
         id="register-modal__form"
@@ -90,9 +101,13 @@ const RegisterModal = ({
             onChange={handleFormChange}
           />
           <span
-            className="modal__input-error modal__card-error"
+            className={`modal__input-error ${
+              errors.email != "" ? "modal__error_visible" : ""
+            }`}
             id="register-modal__input-email-error"
-          ></span>
+          >
+            {errors.email}
+          </span>
         </label>
         <label
           htmlFor="register-modal__input-password"
@@ -112,9 +127,13 @@ const RegisterModal = ({
             onChange={handleFormChange}
           />
           <span
-            className="modal__input-error modal__card-error"
+            className={`modal__input-error ${
+              errors.password != "" ? "modal__error_visible" : ""
+            }`}
             id="register-modal__input-password-error"
-          ></span>
+          >
+            {errors.password}
+          </span>
         </label>
         <label
           htmlFor="register-modal__input-username"
@@ -133,15 +152,26 @@ const RegisterModal = ({
             onChange={handleFormChange}
           />
           <span
-            className="modal__input-error modal__card-error"
+            className={`modal__input-error ${
+              errors.username != "" ? "modal__error_visible" : ""
+            }`}
             id="register-modal__input-name-error"
-          ></span>
+          >
+            {errors.username}
+          </span>
         </label>
         <div className="register-modal__submit-btn">
-          <button type="submit" className="register-modal__submit">
+          <button
+            type="submit"
+            className={`register-modal__submit ${
+              buttonDisabled ? "register-modal__submit_disabled" : ""
+            }`}
+            disabled={buttonDisabled}
+          >
             {buttonText}
           </button>
           <button
+            type="button"
             className="register-modal__login-toggle"
             onClick={onLoginClick}
           >

@@ -4,6 +4,7 @@
   align-items: center;
   max-width: 608px;
   margin: auto;
+  padding-bottom: 40px;
 }
 
 .searchform__text {
@@ -11,14 +12,16 @@
   font-size: 60px;
   line-height: 64px;
   margin: 80px 0 32px;
-  font-family: "Roboto-Slab-400";
+  font-family: "Roboto Slab";
+  font-weight: 400;
 }
 
 .searchform__description {
   color: white;
   font-size: 18px;
   line-height: 24px;
-  font-family: "Roboto-400";
+  font-family: "Roboto";
+  font-weight: 400;
 }
 
 .searchform__bar {
@@ -40,7 +43,8 @@
   border: none;
   font-size: 16px;
   line-height: 22px;
-  font-family: "Roboto-400";
+  font-family: "Roboto";
+  font-weight: 400;
   padding-left: 24px;
 }
 
@@ -55,7 +59,8 @@
   border: none;
   color: white;
   background-color: rgba(47, 113, 229, 1);
-  font-family: "Roboto-500";
+  font-family: "Roboto";
+  font-weight: 500;
   cursor: pointer;
 }
 

@@ -34,7 +34,7 @@ function Header({ handleLoginClick, handleLogout, theme }) {
                 Home
               </button>
             </Link>
-            <Link to="/profile">
+            <Link to="/saved-news">
               <button
                 type="button"
                 className={
@@ -55,7 +55,7 @@ function Header({ handleLoginClick, handleLogout, theme }) {
               }
             >
               <Link
-                to="/profile"
+                to="/saved-news"
                 className={
                   theme === "profile"
                     ? "header__username-link-dark"

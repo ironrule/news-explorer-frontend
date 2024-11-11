@@ -1,6 +1,10 @@
+import React, { useContext } from "react";
 import "./SearchForm.css";
+import { useForm } from "../../hooks/useForm";
+import * as api from "../../utils/api.js";
+import { ArticleContext } from "../../contexts/ArticleContext.js";
 
-function SearchForm(handleSubmit) {
+function SearchForm({ handleSubmit }) {
   const handleMouseHover = (e) => {
     e.currentTarget.classList.add("searchform__btn-hover");
   };
@@ -16,6 +20,33 @@ function SearchForm(handleSubmit) {
     e.currentTarget.classList.remove("searchform__btn-hover");
     e.currentTarget.classList.remove("searchform__btn-click");
   };
+
+  const { setArticles, setSearchPerformed } = useContext(ArticleContext);
+  const initialFormValues = {
+    search: "",
+  };
+  const { formValues, handleFormChange, setFormValues } =
+    useForm(initialFormValues);
+  const handleSearchSubmit = (e) => {
+    e.preventDefault();
+    setSearchPerformed(true);
+    const makeRequest = () => {
+      return api
+        .getArticles({
+          search: formValues.search,
+        })
+        .then((data) => {
+          const updatedArticles = data.map((article) => ({
+            ...article,
+            keyword: formValues.search,
+          }));
+          setArticles(updatedArticles);
+        });
+    };
+    handleSubmit(makeRequest);
+    setFormValues(initialFormValues);
+  };
+
   return (
     <>
       <div className="searchform">
@@ -27,7 +58,7 @@ function SearchForm(handleSubmit) {
           account.
         </p>
         <form
-          // onSubmit={handleSubmit}
+          onSubmit={handleSearchSubmit}
           className="searchform__search"
           name="search-form"
           id="search-form"
@@ -36,7 +67,14 @@ function SearchForm(handleSubmit) {
             <input
               type="text"
               className="searchform__textbar"
+              name="search"
+              id="search-input"
               placeholder="Enter topic"
+              required
+              minLength="1"
+              maxLength="100"
+              value={formValues.search}
+              onChange={handleFormChange}
             />
             <button
               type="submit"

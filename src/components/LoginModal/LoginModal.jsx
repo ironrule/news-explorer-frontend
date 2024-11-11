@@ -1,4 +1,4 @@
-import React, { useContext, useEffect } from "react";
+import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "../Modal/Modal.jsx";
 import { useForm } from "../../hooks/useForm";
@@ -8,30 +8,38 @@ import { setToken } from "../../utils/token.js";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 
 const LoginModal = ({
-  handleSubmit,
   isOpen,
   handleClose,
   onRegisterClick,
+  handleSubmit,
   buttonText,
 }) => {
+  const [buttonDisabled, setButtonDisabled] = useState(true);
   const navigate = useNavigate();
   const { setCurrentUser, setIsLoggedIn } = useContext(CurrentUserContext);
-  const initialFormValues = {
+  const initialLoginFormValues = {
     email: "",
     password: "",
   };
 
-  const { formValues, handleFormChange, setFormValues } =
-    useForm(initialFormValues);
+  const { formValues, handleFormChange, errors, setFormValues } = useForm(
+    initialLoginFormValues
+  );
+
+  useEffect(() => {
+    const hasErrors = errors.email || errors.password;
+    const isFormEmpty = !formValues.email || !formValues.password;
+    setButtonDisabled(hasErrors || isFormEmpty);
+  }, [formValues, errors]);
 
   useEffect(() => {
     if (isOpen) {
-      setFormValues(initialFormValues);
+      setFormValues(initialLoginFormValues);
     }
-  }, [isOpen]);
+  }, [isOpen, setFormValues]);
 
   const handleLoginSubmit = (e) => {
-    e.preventDefault();
+    e.preventDefault;
     const makeRequest = () => {
       if (!formValues.email || !formValues.password) {
         return Promise.reject("Must provide email and password.");
@@ -49,11 +57,16 @@ const LoginModal = ({
         .then((user) => {
           setCurrentUser(user);
           setIsLoggedIn(true);
+        })
+        .catch((error) => {
+          console.error(error);
+        })
+        .finally(() => {
+          setFormValues(initialLoginFormValues);
+          navigate("/");
         });
     };
     handleSubmit(makeRequest);
-    setFormValues(initialFormValues);
-    navigate("/");
   };
 
   return (
@@ -79,9 +92,13 @@ const LoginModal = ({
             onChange={handleFormChange}
           />
           <span
-            className="modal__input-error modal__card-error"
+            className={`modal__input-error ${
+              errors.email != "" ? "modal__error_visible" : ""
+            }`}
             id="login-modal__input-email-error"
-          ></span>
+          >
+            {errors.email}
+          </span>
         </label>
         <label htmlFor="login-modal__input-password" className="modal__label">
           Password
@@ -98,20 +115,31 @@ const LoginModal = ({
             onChange={handleFormChange}
           />
           <span
-            className="modal__input-error modal__card-error"
+            className={`modal__input-error ${
+              errors.password != "" ? "modal__error_visible" : ""
+            }`}
             id="login-modal__input-password-error"
-          ></span>
+          >
+            {errors.password}
+          </span>
         </label>
         <div className="login-modal__submit-btn">
-          <button type="submit" className="login-modal__submit">
+          <button
+            type="submit"
+            className={`login-modal__submit " ${
+              buttonDisabled ? "login-modal__submit_disabled" : ""
+            }`}
+            disabled={buttonDisabled}
+          >
             {buttonText}
           </button>
           <button
+            type="button"
             className="login-modal__register-toggle"
             onClick={onRegisterClick}
           >
             <span className="login-modal__register-toggle-text">or</span> Sign
-            Up
+            up
           </button>
         </div>
       </form>

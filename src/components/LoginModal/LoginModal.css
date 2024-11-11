@@ -13,8 +13,16 @@
   color: white;
   margin: 7px 12px 16px;
   cursor: pointer;
-  font-family: "Roboto-500";
+  font-family: "Roboto";
+  font-weight: 500;
   padding: 0px;
+}
+
+.login-modal__submit_disabled {
+  background-color: lightgray;
+  color: rgba(0, 0, 0, 0.2);
+  border: 1px solid black;
+  cursor: not-allowed;
 }
 
 .login-modal__register-toggle {
@@ -22,7 +30,8 @@
   background-color: white;
   color: blue;
   cursor: pointer;
-  font-family: "Inter-400";
+  font-family: "Inter";
+  font-weight: 400;
   padding: 0;
 }
 

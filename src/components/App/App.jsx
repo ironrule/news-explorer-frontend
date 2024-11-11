@@ -9,7 +9,6 @@ import {
 import "./App.css";
 import Header from "../Header/Header";
 import Footer from "../Footer/Footer";
-import Navigation from "../Navigation/Navigation";
 import Preloader from "../Preloader/Preloader";
 import SearchForm from "../SearchForm/SearchForm";
 import About from "../About/About";
@@ -17,16 +16,16 @@ import NewsResults from "../NewsResults/NewsResults";
 import LoginModal from "../LoginModal/LoginModal";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import RegisterSuccessModal from "../RegisterSuccessModal/RegisterSuccessModal";
-import EditProfileModal from "../EditProfileModal/EditProfileModal";
-import Profile from "../Profile/Profile";
+import SavedNews from "../SavedNews/SavedNews";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { ArticleContext } from "../../contexts/ArticleContext";
 import { getToken, removeToken } from "../../utils/token.js";
 import * as auth from "../../utils/auth";
+import ProtectedRoute from "../ProtectedRoute/ProtectedRoute.jsx";
+import { getSavedArticles } from "../../utils/api.js";
 
 function App() {
   const [activeModal, setActiveModal] = useState("");
-  const [selectedCard, setSelectedCard] = useState({});
   const [currentUser, setCurrentUser] = useState({
     _id: "",
     username: "",
@@ -35,8 +34,9 @@ function App() {
   const [isLoggedIn, setIsLoggedIn] = useState(false);
   const [isLoading, setIsLoading] = useState(false);
   const [articles, setArticles] = useState([]);
+  const [savedArticles, setSavedArticles] = useState([]);
+  const [searchPerformed, setSearchPerformed] = useState(false);
   const navigate = useNavigate();
-
   const path = useLocation().pathname.slice(1);
 
   const handleLoginClick = () => {
@@ -46,6 +46,7 @@ function App() {
   const handleLogout = () => {
     removeToken();
     setIsLoggedIn(false);
+    setSavedArticles([]);
     navigate("/");
   };
 
@@ -54,12 +55,8 @@ function App() {
   };
 
   const handleRegisterClick = () => {
+    closeActiveModal;
     setActiveModal("register-modal");
-  };
-
-  const handleCardClick = (card) => {
-    setActiveModal("item-modal");
-    setSelectedCard(card);
   };
 
   useEffect(() => {
@@ -73,6 +70,13 @@ function App() {
         setCurrentUser(user);
         setIsLoggedIn(true);
       })
+      .then(
+        getSavedArticles()
+          .then((data) => {
+            setSavedArticles(data);
+          })
+          .catch(console.error)
+      )
       .catch(console.error);
   }, [isLoggedIn]);
 
@@ -92,8 +96,17 @@ function App() {
     <CurrentUserContext.Provider
       value={{ currentUser, isLoggedIn, setIsLoggedIn, setCurrentUser }}
     >
-      <ArticleContext.Provider value={{}}>
-        <div className={path === "profile" ? "page page-dark" : "page"}>
+      <ArticleContext.Provider
+        value={{
+          articles,
+          setArticles,
+          savedArticles,
+          setSavedArticles,
+          searchPerformed,
+          setSearchPerformed,
+        }}
+      >
+        <div className={path === "saved-news" ? "page page-dark" : "page"}>
           <div className="page__content">
             <Routes>
               <Route
@@ -106,24 +119,28 @@ function App() {
                       handleLogout={handleLogout}
                     />
                     <SearchForm handleSubmit={handleSubmit} />
-                    <NewsResults />
+                    <Preloader
+                      isLoading={isLoading}
+                      setIsLoading={setIsLoading}
+                    />
+                    <NewsResults handleLoginClick={handleLoginClick} />
                     <About />
                     <Footer />
                   </>
                 }
               />
               <Route
-                path="/profile"
+                path="/saved-news"
                 element={
-                  <>
+                  <ProtectedRoute>
                     <Header
                       theme="profile"
                       handleLoginClick={handleLoginClick}
                       handleLogout={handleLogout}
                     />
-                    <Profile />
+                    <SavedNews />
                     <Footer />
-                  </>
+                  </ProtectedRoute>
                 }
               />
               <Route path="*" element={<Navigate to="/" replace />} />
@@ -148,12 +165,6 @@ function App() {
           isOpen={activeModal === "register-success-modal"}
           handleClose={closeActiveModal}
           onLoginClick={handleLoginClick}
-        />
-        <EditProfileModal
-          isOpen={activeModal === "edit-profile-modal"}
-          handleClose={closeActiveModal}
-          buttonText={isLoading ? "Wait..." : "Save changes"}
-          handleSubmit={handleSubmit}
         />
       </ArticleContext.Provider>
     </CurrentUserContext.Provider>

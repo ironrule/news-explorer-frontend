@@ -31,7 +31,8 @@
   margin-top: 19px;
   margin-bottom: 13px;
   color: white;
-  font-family: "Roboto-500";
+  font-family: "Roboto";
+  font-weight: 500;
   cursor: pointer;
 }
 

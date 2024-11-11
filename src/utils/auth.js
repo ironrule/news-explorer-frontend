@@ -9,7 +9,7 @@ export const getUserInfo = (token) => {
     resolve({
       username: "Brandon King",
       email: "fake@example,com",
-      _id: "fake-id",
+      _id: "671a5c3178b8220133758a18",
     });
   });
 };
