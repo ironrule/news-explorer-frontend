@@ -14,6 +14,7 @@ import SearchForm from "../SearchForm/SearchForm";
 import About from "../About/About";
 import NewsResults from "../NewsResults/NewsResults";
 import LoginModal from "../LoginModal/LoginModal";
+import Navigation from "../Navigation/Navigation.jsx";
 import RegisterModal from "../RegisterModal/RegisterModal";
 import RegisterSuccessModal from "../RegisterSuccessModal/RegisterSuccessModal";
 import SavedNews from "../SavedNews/SavedNews";
@@ -47,7 +48,12 @@ function App() {
     removeToken();
     setIsLoggedIn(false);
     setSavedArticles([]);
+    setActiveModal("");
     navigate("/");
+  };
+
+  const handleMobileMenuOpen = () => {
+    setActiveModal("mobile-menu-modal");
   };
 
   const closeActiveModal = () => {
@@ -117,6 +123,9 @@ function App() {
                       theme=""
                       handleLoginClick={handleLoginClick}
                       handleLogout={handleLogout}
+                      setActiveModal={setActiveModal}
+                      closeActiveModal={closeActiveModal}
+                      handleMobileMenuOpen={handleMobileMenuOpen}
                     />
                     <SearchForm handleSubmit={handleSubmit} />
                     <Preloader
@@ -137,6 +146,7 @@ function App() {
                       theme="profile"
                       handleLoginClick={handleLoginClick}
                       handleLogout={handleLogout}
+                      handleMobileMenuOpen={handleMobileMenuOpen}
                     />
                     <SavedNews />
                     <Footer />
@@ -165,6 +175,12 @@ function App() {
           isOpen={activeModal === "register-success-modal"}
           handleClose={closeActiveModal}
           onLoginClick={handleLoginClick}
+        />
+        <Navigation
+          handleLoginClick={handleLoginClick}
+          isOpen={activeModal === "mobile-menu-modal"}
+          handleClose={closeActiveModal}
+          handleLogout={handleLogout}
         />
       </ArticleContext.Provider>
     </CurrentUserContext.Provider>

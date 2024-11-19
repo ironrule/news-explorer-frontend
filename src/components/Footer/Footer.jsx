@@ -10,16 +10,20 @@ function Footer() {
         &copy; 2024 Brandon King, Powered by News API
       </div>
       <div className="footer__right">
-        <Link to="/">
-          <button className="footer__btn">Home</button>
-        </Link>
-        <button className="footer__btn">TripleTen</button>
-        <button className="footer__btn-icon">
-          <img src={ghlogo} alt="GitHub Logo" />
-        </button>
-        <button className="footer__btn-icon">
-          <img src={fblogo} alt="Facebook Logo" />
-        </button>
+        <div className="footer__text-btns">
+          <Link to="/">
+            <button className="footer__btn">Home</button>
+          </Link>
+          <button className="footer__btn">TripleTen</button>
+        </div>
+        <div className="footer__btns">
+          <button className="footer__btn-icon">
+            <img src={ghlogo} alt="GitHub Logo" />
+          </button>
+          <button className="footer__btn-icon">
+            <img src={fblogo} alt="Facebook Logo" />
+          </button>
+        </div>
       </div>
     </footer>
   );

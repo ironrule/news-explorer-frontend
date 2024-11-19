@@ -6,3 +6,16 @@
 .page-dark {
   background: none;
 }
+
+@media screen and (min-width: 450px) and (max-width: 768px) {
+  .page {
+    max-width: 768px;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .page {
+    max-width: 320px;
+    max-height: 536px;
+  }
+}

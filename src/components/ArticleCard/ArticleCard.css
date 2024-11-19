@@ -137,7 +137,6 @@
   display: flex;
   flex-direction: column;
   position: absolute;
-  top: 15px;
   background-color: white;
   border-radius: 14px;
 }
@@ -190,4 +189,101 @@
 
 .card__source-name {
   color: rgba(182, 188, 191, 1);
+}
+
+@media screen and (max-width: 450px) {
+  .card {
+    width: 288px;
+    max-width: 288px;
+    height: 440px;
+  }
+  .card__image {
+    width: 288px;
+    height: 196px;
+    max-height: 196px;
+  }
+  .card__text-section {
+    height: 244px;
+  }
+  .card__description {
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+  }
+  .card__trash {
+    top: 16px;
+    right: 16px;
+  }
+  .card__bookmark {
+    top: 16px;
+    right: 16px;
+  }
+  .card__bookmarked {
+    top: 16px;
+    right: 16px;
+  }
+  .card__bookmark-tooltip {
+    top: 16px;
+    right: -16px;
+  }
+  .card__keyword {
+    top: 16px;
+    left: 16px;
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 768px) {
+  .card {
+    width: 224px;
+    max-width: 224px;
+    height: 420px;
+  }
+  .card__image {
+    width: 224px;
+    height: 150px;
+    max-height: 150px;
+  }
+  .card__bookmark {
+    top: 8px;
+    right: 8px;
+  }
+  .card__bookmarked {
+    top: 8px;
+    right: 8px;
+  }
+  .card__keyword {
+    top: 8px;
+    left: 8px;
+  }
+  .card__bookmark {
+    top: 8px;
+    right: 8px;
+  }
+  .card__bookmarked {
+    top: 8px;
+    right: 8px;
+  }
+  .card__bookmark-tooltip {
+    top: 8px;
+    right: -24px;
+  }
+  .card__trash {
+    top: 8px;
+    right: 8px;
+  }
+  .card__trash:hover {
+    top: 8px;
+    right: 8px;
+  }
+  .card__trash-tooltip {
+    top: 8px;
+    right: -24px;
+  }
+  .card__text-section {
+    padding: 0 16px;
+    height: 270px;
+  }
+  .card__name {
+    font-size: 22px;
+    line-height: 24px;
+  }
 }

@@ -37,3 +37,12 @@
   padding: 0;
   margin: 24px auto 80px;
 }
+
+@media screen and (max-width: 450px) {
+}
+
+@media screen and (min-width: 450px) and (max-width: 768px) {
+  .preloader {
+    max-width: 768px;
+  }
+}

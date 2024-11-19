@@ -1,0 +1,84 @@
+.nav__menu {
+  background-color: rgba(26, 27, 34, 1);
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  visibility: hidden;
+  border-bottom-left-radius: 16px;
+  border-bottom-right-radius: 16px;
+  /* height: 230px; */
+}
+
+.nav__top {
+  border-bottom: 1px solid rgba(255, 255, 255, 0.2);
+  width: 100%;
+}
+
+.nav__logo {
+  display: flex;
+  margin: 16px 16px;
+  max-width: 117px;
+  height: 24px;
+  cursor: pointer;
+}
+
+.nav__opened {
+  visibility: visible;
+}
+
+.nav__close {
+  position: absolute;
+  top: 26px;
+  left: 278px;
+  display: flex;
+  flex-direction: column;
+  gap: 0px;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.nav__bar {
+  width: 16px;
+  height: 2px;
+  background-color: white;
+  transition: all 0.3s ease;
+}
+
+.nav__bar1.active {
+  width: 20px;
+  transform: rotate(45deg) translateY(1px);
+}
+
+.nav__bar2.active {
+  width: 20px;
+  transform: rotate(-45deg) translateY(-1px);
+}
+
+.nav__text-btn {
+  border: 1px solid white;
+  border-radius: 100px;
+  width: 288px;
+  height: 56px;
+  background-color: transparent;
+  margin: 12px;
+  color: white;
+  font-family: "Roboto";
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.nav__text-btn-user {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 10px;
+}
+
+.header__username-link {
+  color: white;
+  text-decoration: none;
+}

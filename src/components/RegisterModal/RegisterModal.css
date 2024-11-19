@@ -30,3 +30,9 @@
 .register-modal__login-toggle-text {
   color: black;
 }
+
+@media screen and (max-width: 450px) {
+  .register-modal__submit {
+    width: 288px;
+  }
+}

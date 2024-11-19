@@ -7,7 +7,12 @@ import { Link } from "react-router-dom";
 import "./Header.css";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext.js";
 
-function Header({ handleLoginClick, handleLogout, theme }) {
+function Header({
+  handleLoginClick,
+  handleLogout,
+  theme,
+  handleMobileMenuOpen,
+}) {
   const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
 
   return (
@@ -91,6 +96,31 @@ function Header({ handleLoginClick, handleLogout, theme }) {
             </button>
           </>
         )}
+      </div>
+      {/* <button
+        type="button"
+        className={
+          theme === "profile"
+            ? "header__mobile-menu-dark"
+            : "header__mobile-menu"
+        }
+        onClick={handleMobileMenuOpen}
+      ></button> */}
+      <div className="header__mobile-menu" onClick={handleMobileMenuOpen}>
+        <div
+          className={
+            theme === "profile"
+              ? "header__mobile-bar-dark"
+              : "header__mobile-bar"
+          }
+        ></div>
+        <div
+          className={
+            theme === "profile"
+              ? "header__mobile-bar-dark"
+              : "header__mobile-bar"
+          }
+        ></div>
       </div>
     </header>
   );

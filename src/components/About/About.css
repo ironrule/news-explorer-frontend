@@ -10,6 +10,7 @@
   width: 464px;
   height: 464px;
   margin-left: 104px;
+  align-self: center;
 }
 
 .about__text {
@@ -28,4 +29,39 @@
   font-weight: 400;
   font-size: 18px;
   line-height: 24px;
+}
+.about__description:last-child {
+  margin: 0;
+}
+
+@media screen and (max-width: 450px) {
+  .about {
+    flex-direction: column;
+    margin: 64px 16px 128px;
+    gap: 24px;
+  }
+  .about__logo {
+    width: 272px;
+    height: 272px;
+    margin: 0 auto;
+  }
+  .about__header {
+    font-size: 30px;
+    line-height: 40px;
+    margin-top: 0;
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 768px) {
+  .about {
+    margin: 40px 0 40px;
+  }
+  .about__logo {
+    width: 232px;
+    height: 232px;
+    margin-left: 40px;
+  }
+  .about__text {
+    max-width: 424px;
+  }
 }

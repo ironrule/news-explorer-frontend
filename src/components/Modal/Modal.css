@@ -11,10 +11,6 @@
   visibility: hidden;
 }
 
-.modal__content {
-  max-width: 430px;
-}
-
 .modal_opened {
   visibility: visible;
 }
@@ -45,6 +41,7 @@
 }
 
 .modal__content {
+  max-width: 430px;
   background-color: white;
   position: relative;
   padding: 34px 36px 28px;
@@ -69,13 +66,6 @@
   height: 64px;
 }
 
-.modal__legend {
-  font-size: 16px;
-  line-height: 20px;
-  cursor: default;
-  padding-bottom: 4px;
-}
-
 .modal__input {
   display: block;
   border-bottom: 1px solid black;
@@ -92,26 +82,6 @@
   color: rgba(0, 0, 0, 1);
   font-size: 14px;
   line-height: 16.94px;
-}
-
-.modal__radio-buttons {
-  border: none;
-  padding: 0;
-  display: flex;
-  flex-direction: column;
-}
-
-.modal__radio-input {
-  margin: 8px 8px 0 0;
-  cursor: pointer;
-}
-
-.modal__radio-input + span {
-  opacity: 0.5;
-}
-
-.modal__radio-input:checked + span {
-  opacity: 1;
 }
 
 .modal__submit {
@@ -148,4 +118,17 @@
 
 .modal__error_visible {
   visibility: visible;
+}
+
+@media screen and (max-width: 450px) {
+  .modal__close {
+    height: 24px;
+    width: 24px;
+    top: -40px;
+    right: 16px;
+  }
+  .modal__content {
+    max-width: 320px;
+    padding: 34px 16px 28px;
+  }
 }
