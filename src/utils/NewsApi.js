@@ -1,4 +1,4 @@
-const baseUrl = "https://newsapi.org/v2/everything";
+const baseUrl = "https://nomoreparties.co/news/v2/everything";
 const apiKey = "9bffc222f8114c1cb6466160d8ed635f";
 const calculateDate = new Date(Date.now() - 0 * 24 * 60 * 60 * 1000);
 const fromDate = `${calculateDate.getFullYear()}-${calculateDate.getMonth()}-${calculateDate.getDate()}`;
