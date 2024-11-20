@@ -96,9 +96,6 @@
     height: 56px;
     padding: 0 0 0 16px;
   }
-  .searchform__textbar::placeholder {
-    padding-left: 16px;
-  }
   .searchform__btn {
     position: relative;
     height: 56px;
