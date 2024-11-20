@@ -18,5 +18,7 @@ export function checkResponse(res) {
 export function getArticles(searchTerm) {
   return request(
     `${baseUrl}?q=${searchTerm}&from=${fromDate}&sortBy=popularity&pageSize=100&language=en&apiKey=${apiKey}`
-  );
+  ).catch((error) => {
+    alert(error);
+  });
 }
