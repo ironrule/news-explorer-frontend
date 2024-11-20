@@ -1,0 +1,131 @@
+.searchform {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  max-width: 608px;
+  margin: auto;
+  padding-bottom: 40px;
+}
+
+.searchform__text {
+  color: white;
+  font-size: 60px;
+  line-height: 64px;
+  margin: 80px 0 32px;
+  font-family: "Roboto Slab";
+  font-weight: 400;
+}
+
+.searchform__description {
+  color: white;
+  font-size: 18px;
+  line-height: 24px;
+  font-family: "Roboto";
+  font-weight: 400;
+}
+
+.searchform__bar {
+  display: flex;
+  align-items: center;
+  margin: 88px 0 0 0;
+  max-width: 608px;
+  position: relative;
+}
+
+.searchform__textbar::placeholder {
+  color: rgba(182, 188, 191, 1);
+}
+
+.searchform__textbar {
+  width: 608px;
+  height: 64px;
+  border-radius: 100px;
+  border: none;
+  font-size: 16px;
+  line-height: 22px;
+  font-family: "Roboto";
+  font-weight: 400;
+  padding: 0 0 0 24px;
+  box-sizing: border-box;
+}
+
+.searchform__textbar:focus {
+  outline: none;
+}
+
+.searchform__btn {
+  position: absolute;
+  right: -1px;
+  top: 0px;
+  height: 66px;
+  width: 168px;
+  margin: 0;
+  border-radius: 100px;
+  border: none;
+  color: white;
+  background-color: rgba(47, 113, 229, 1);
+  font-family: "Roboto";
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.searchform__btn-hover {
+  background-color: rgba(52, 126, 255, 1);
+}
+
+.searchform__btn-click {
+  background-color: (42, 101, 204, 1);
+}
+
+@media screen and (max-width: 450px) {
+  .searchform__text {
+    max-width: 285px;
+    font-size: 36px;
+    line-height: 40px;
+    margin: 30px auto 0;
+  }
+  .searchform__description {
+    max-width: 288px;
+    margin: 16px auto 0;
+  }
+  .searchform__bar {
+    flex-direction: column;
+  }
+  .searchform__textbar {
+    width: 288px;
+    height: 56px;
+    padding: 0 0 0 16px;
+  }
+  .searchform__textbar::placeholder {
+    padding-left: 16px;
+  }
+  .searchform__btn {
+    position: relative;
+    height: 56px;
+    width: 288px;
+    margin: 16px 0;
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 768px) {
+  .searchform__text {
+    max-width: 444px;
+    font-size: 36px;
+    line-height: 40px;
+    margin: 38px auto 0;
+  }
+  .searchform__description {
+    max-width: 452px;
+    margin: 16px auto 0;
+  }
+  .searchform__textbar {
+    max-width: 452px;
+  }
+  .searchform__bar {
+    display: flex;
+    align-items: center;
+    margin: 48px 0 0 0;
+    max-width: 608px;
+    position: relative;
+  }
+}
