@@ -1,0 +1,38 @@
+.register-modal__submit {
+  width: 360px;
+  height: 64px;
+  border-radius: 100px;
+  border: none;
+  background-color: rgba(47, 113, 229, 1);
+  color: white;
+  margin: 7px 0 16px;
+  cursor: pointer;
+  font-family: "Roboto";
+  font-weight: 500;
+  padding: 0px;
+}
+
+.register-modal__submit-btn {
+  display: flex;
+  flex-direction: column;
+}
+
+.register-modal__login-toggle {
+  border: none;
+  background-color: white;
+  color: blue;
+  cursor: pointer;
+  font-family: "Inter";
+  font-weight: 400;
+  padding: 0;
+}
+
+.register-modal__login-toggle-text {
+  color: black;
+}
+
+@media screen and (max-width: 450px) {
+  .register-modal__submit {
+    width: 288px;
+  }
+}
