@@ -10,7 +10,7 @@
 
 **Intro**
 
-This project allows users to search for articles and save them to their profile based on interests. I have hard-coded several articles so that the site is fully functional and can easily be updated to work with the back end server which I will build.
+This project allows users to search for articles and save them to their profile based on interests. I have also connected the NewsAPI from https://newsapi.org/ and implemented the search features. Bookmarking is available on the front end but is not persistent through reloads. This functionality is for the future project of the back end.
 
 The user's Saved Articles page will contain their articles as well as a list of keywords at the top, and a count of the number of articles currently saved for the user. I have added functionality to add the searched term to the article so that when each article is saved, you can see that the search term is available on the article card. Bookmarking and deleting of articles is fully functional using actual data from the API and can be easily adjusted for the backend project.
 
@@ -52,4 +52,4 @@ I have added form validation and Javascript controls to limit what can be entere
 
 **Future Plans**
 
-Future plans for my project are to build the back-end server to allow users to log in and save articles and data. Currently for testing purposes, a user can log in with any username and password and retrieve hard-coded data as articles and saved articles, but all functionality is already available and working.
+Future plans for my project are to build the back-end server to allow users to log in and save articles and data. Currently for testing purposes, a user can log in with any username and password and retrieve articles from the NewsAPI and can save articles which will reset upon site reload.
