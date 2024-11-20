@@ -2,6 +2,7 @@ import React, { useContext } from "react";
 import "./SearchForm.css";
 import { useForm } from "../../hooks/useForm";
 import * as api from "../../utils/api.js";
+import * as NewsApi from "../../utils/NewsApi.js";
 import { ArticleContext } from "../../contexts/ArticleContext.js";
 
 function SearchForm({ handleSubmit }) {
@@ -31,17 +32,17 @@ function SearchForm({ handleSubmit }) {
     e.preventDefault();
     setSearchPerformed(true);
     const makeRequest = () => {
-      return api
-        .getArticles({
-          search: formValues.search,
-        })
-        .then((data) => {
-          const updatedArticles = data.map((article) => ({
+      return NewsApi.getArticles(formValues.search).then((data) => {
+        const updatedArticles = data.articles.map((article, index) => {
+          const keyId = `${Date.now()}-${index}-${article.title || "default"}`;
+          return {
             ...article,
             keyword: formValues.search,
-          }));
-          setArticles(updatedArticles);
+            keyId,
+          };
         });
+        setArticles(updatedArticles);
+      });
     };
     handleSubmit(makeRequest);
     setFormValues(initialFormValues);

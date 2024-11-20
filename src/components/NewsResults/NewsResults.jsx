@@ -38,7 +38,7 @@ function NewsResults({ handleBookmarkArticle, handleLoginClick, isLoading }) {
                 {displayedArticles.map((item) => {
                   return (
                     <ArticleCard
-                      key={item.source.id}
+                      key={item.keyId}
                       item={item}
                       handleBookmarkArticle={handleBookmarkArticle}
                       handleLoginClick={handleLoginClick}

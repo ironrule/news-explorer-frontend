@@ -40,7 +40,7 @@ function SavedNews({ handleDeleteArticle }) {
           {savedArticles.map((item) => {
             return (
               <ArticleCard
-                key={item.source.id}
+                key={item.keyId}
                 item={item}
                 handleDeleteArticle={handleDeleteArticle}
               />

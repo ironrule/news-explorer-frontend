@@ -13,21 +13,16 @@ function ArticleCard({ item, handleLoginClick }) {
 
   const handleDeleteArticle = (id, e) => {
     e.stopPropagation();
-    setSavedArticles((items) => items.filter((item) => item.source.id !== id));
+    setSavedArticles((items) => items.filter((item) => item.keyId !== id));
   };
 
   const handleBookmarkArticle = (id, e) => {
     e.stopPropagation();
-    const articleToBookmark = articles.find(
-      (article) => article.source.id === id
-    );
-    if (
-      articleToBookmark &&
-      !savedArticles.some((item) => item.source.id === id)
-    ) {
+    const articleToBookmark = articles.find((article) => article.keyId === id);
+    if (articleToBookmark && !savedArticles.some((item) => item.keyId === id)) {
       setSavedArticles((items) => [...items, articleToBookmark]);
     } else {
-      handleDeleteArticle(item.source.id, e);
+      handleDeleteArticle(item.keyId, e);
     }
   };
 
@@ -53,20 +48,18 @@ function ArticleCard({ item, handleLoginClick }) {
           className={
             path === "saved-news"
               ? "card__trash"
-              : !savedArticles.some(
-                  (existing) => existing.source.id === item.source.id
-                )
+              : !savedArticles.some((existing) => existing.keyId === item.keyId)
               ? "card__bookmark"
               : "card__bookmarked"
           }
           onClick={
             path === "saved-news"
               ? (e) => {
-                  handleDeleteArticle(item.source.id, e);
+                  handleDeleteArticle(item.keyId, e);
                 }
               : (e) => {
                   isLoggedIn
-                    ? handleBookmarkArticle(item.source.id, e)
+                    ? handleBookmarkArticle(item.keyId, e)
                     : handleLoginClick();
                 }
           }
@@ -82,9 +75,7 @@ function ArticleCard({ item, handleLoginClick }) {
             {path === "saved-news"
               ? "Remove from saved"
               : isLoggedIn
-              ? !savedArticles.some(
-                  (existing) => existing.source.id === item.source.id
-                )
+              ? !savedArticles.some((existing) => existing.keyId === item.keyId)
                 ? "Add to saved"
                 : "Already saved"
               : "Sign in to save articles"}
