@@ -4,7 +4,7 @@ import { useContext, useState } from "react";
 import { ArticleContext } from "../../contexts/ArticleContext";
 import notFoundImage from "../../assets/notfound.png";
 
-function NewsResults({ handleBookmarkArticle, handleLoginClick }) {
+function NewsResults({ handleBookmarkArticle, handleLoginClick, isLoading }) {
   const { articles, searchPerformed } = useContext(ArticleContext);
   const [currentIndex, setCurrentIndex] = useState(0);
   const handleLoadClick = () => {
@@ -15,7 +15,7 @@ function NewsResults({ handleBookmarkArticle, handleLoginClick }) {
 
   return (
     <>
-      {searchPerformed && articles.length === 0 ? (
+      {searchPerformed && isLoading === "false" && articles.length === 0 ? (
         <div className="newsresults__not-found">
           <img
             src={notFoundImage}

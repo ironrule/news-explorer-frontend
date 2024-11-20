@@ -132,7 +132,10 @@ function App() {
                       isLoading={isLoading}
                       setIsLoading={setIsLoading}
                     />
-                    <NewsResults handleLoginClick={handleLoginClick} />
+                    <NewsResults
+                      handleLoginClick={handleLoginClick}
+                      isLoading={isLoading}
+                    />
                     <About />
                     <Footer />
                   </>

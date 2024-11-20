@@ -48,6 +48,10 @@
   padding-left: 24px;
 }
 
+.searchform__textbar:focus {
+  outline: none;
+}
+
 .searchform__btn {
   position: absolute;
   right: -1px;
