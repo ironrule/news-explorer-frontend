@@ -45,7 +45,8 @@
   line-height: 22px;
   font-family: "Roboto";
   font-weight: 400;
-  padding-left: 24px;
+  padding: 0 0 0 24px;
+  box-sizing: border-box;
 }
 
 .searchform__textbar:focus {
@@ -93,7 +94,7 @@
   .searchform__textbar {
     width: 288px;
     height: 56px;
-    padding: 0;
+    padding: 0 0 0 16px;
   }
   .searchform__textbar::placeholder {
     padding-left: 16px;

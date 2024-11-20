@@ -25,7 +25,10 @@ function Navigation({ handleLoginClick, isOpen, handleClose, handleLogout }) {
   };
 
   return (
-    <nav className="nav" onClick={handleOverlay}>
+    <nav
+      className={`${isOpen ? "nav__opened" : "nav"}`}
+      onClick={handleOverlay}
+    >
       {isOpen ? (
         <div className={`nav__menu ${isOpen && "nav__opened"}`}>
           {isLoggedIn ? (
@@ -102,11 +105,6 @@ function Navigation({ handleLoginClick, isOpen, handleClose, handleLogout }) {
               </button>
             </>
           )}
-          {/* <button
-            type="button"
-            className="nav__close"
-            onClick={handleClose}
-          ></button> */}
           <div className="nav__close" onClick={handleClose}>
             <div
               className={`nav__bar nav__bar1 ${isOpen ? "active" : ""}`}

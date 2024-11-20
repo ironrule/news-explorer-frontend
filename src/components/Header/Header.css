@@ -71,14 +71,12 @@
   flex-direction: column;
   gap: 4px;
   cursor: pointer;
-  transition: all 0.3s ease;
   display: none;
 }
 .header__mobile-bar {
   width: 16px;
   height: 2px;
   background-color: white;
-  transition: all 0.3s ease;
 }
 
 /* Header Dark Text for Profile Page */
@@ -117,14 +115,12 @@
   left: 280px;
   display: none;
   background-color: black;
-  transition: all 0.3s ease;
 }
 
 .header__mobile-bar-dark {
   width: 16px;
   height: 2px;
   background-color: black;
-  transition: all 0.3s ease;
 }
 
 @media screen and (max-width: 450px) {

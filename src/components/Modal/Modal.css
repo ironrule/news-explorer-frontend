@@ -5,14 +5,17 @@
   bottom: 0;
   right: 0;
   background-color: #0000004d;
-  display: flex;
   justify-content: center;
   align-items: center;
   visibility: hidden;
+  opacity: 0;
+  transition: opacity 0.3s ease;
 }
 
 .modal_opened {
+  display: flex;
   visibility: visible;
+  opacity: 1;
 }
 
 .modal__title {

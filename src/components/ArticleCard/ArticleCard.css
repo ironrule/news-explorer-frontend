@@ -229,6 +229,10 @@
     top: 16px;
     left: 16px;
   }
+  .card__trash:hover {
+    top: 16px;
+    right: 16px;
+  }
 }
 
 @media screen and (min-width: 450px) and (max-width: 768px) {
