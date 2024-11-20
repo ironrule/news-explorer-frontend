@@ -5,7 +5,7 @@ import { CurrentUserContext } from "../../contexts/CurrentUserContext";
 import { ArticleContext } from "../../contexts/ArticleContext";
 
 function ArticleCard({ item, handleLoginClick }) {
-  const { currentUser, isLoggedIn } = useContext(CurrentUserContext);
+  const { isLoggedIn } = useContext(CurrentUserContext);
   const { savedArticles, setSavedArticles, articles, setArticles } =
     useContext(ArticleContext);
   const [showTooltip, setShowTooltip] = useState(false);

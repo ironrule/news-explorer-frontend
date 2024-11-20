@@ -97,15 +97,6 @@ function Header({
           </>
         )}
       </div>
-      {/* <button
-        type="button"
-        className={
-          theme === "profile"
-            ? "header__mobile-menu-dark"
-            : "header__mobile-menu"
-        }
-        onClick={handleMobileMenuOpen}
-      ></button> */}
       <div className="header__mobile-menu" onClick={handleMobileMenuOpen}>
         <div
           className={

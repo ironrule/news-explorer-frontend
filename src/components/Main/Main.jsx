@@ -1,7 +1,4 @@
-import "./Main.css";
-import { useContext } from "react";
-
-function Main({ handleCardClick }) {
+function Main() {
   return (
     <main>
       <section className="cards">

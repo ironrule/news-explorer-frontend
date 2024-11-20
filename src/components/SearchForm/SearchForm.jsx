@@ -1,7 +1,6 @@
 import React, { useContext } from "react";
 import "./SearchForm.css";
 import { useForm } from "../../hooks/useForm";
-import * as api from "../../utils/api.js";
 import * as NewsApi from "../../utils/NewsApi.js";
 import { ArticleContext } from "../../contexts/ArticleContext.js";
 
