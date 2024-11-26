@@ -18,9 +18,7 @@ The user's Saved Articles page will contain their articles as well as a list of 
 
 The site is currently self-hosted on my server at the following address:
 
-- [MAIN: Link to the self-hosted project site](https://news.onelastcup.com/)
-
-- [BACKUP: Link to the self-hosted project site](http://news-explorer.infy.uk)
+- [Link to the self-hosted project site](https://news.onelastcup.com/)
 
 You can review the site in DevTools and inspect each element, as well as change page sizes to see how it will look on different devices. As we were given 3 designs in Figma, some of the different sizes had to be styled based on what looked or worked best for the screen size.
 
