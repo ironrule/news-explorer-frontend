@@ -15,8 +15,8 @@ function NewsResults({ handleBookmarkArticle, handleLoginClick, isLoading }) {
 
   return (
     <>
-      {searchPerformed && isLoading === "false" && articles.length === 0 ? (
-        <div className="newsresults__not-found">
+      {searchPerformed && articles.length === 0 ? (
+        <section className="newsresults__not-found">
           <img
             src={notFoundImage}
             className="newsresults__not-found-image"
@@ -26,38 +26,35 @@ function NewsResults({ handleBookmarkArticle, handleLoginClick, isLoading }) {
           <p className="newsresults__not-found-text">
             Sorry, but nothing matched your search terms.
           </p>
-        </div>
+        </section>
       ) : (
         searchPerformed &&
         articles.length > 0 && (
-          <div className="newsresults__page">
-            <section className="newsresults">
-              <div className="newsresults__text">Search Results</div>
-
-              <ul className="newsresults__cards-list">
-                {displayedArticles.map((item) => {
-                  return (
-                    <ArticleCard
-                      key={item.keyId}
-                      item={item}
-                      handleBookmarkArticle={handleBookmarkArticle}
-                      handleLoginClick={handleLoginClick}
-                    />
-                  );
-                })}
-              </ul>
-              {currentIndex + 3 < articles.length && (
-                <div className="newsresults__load-container">
-                  <button
-                    className="newsresults__load-btn"
-                    onClick={handleLoadClick}
-                  >
-                    Show more
-                  </button>
-                </div>
-              )}
-            </section>
-          </div>
+          <main className="newsresults">
+            <h2 className="newsresults__text">Search Results</h2>
+            <ul className="newsresults__cards-list">
+              {displayedArticles.map((item) => {
+                return (
+                  <ArticleCard
+                    key={item.keyId}
+                    item={item}
+                    handleBookmarkArticle={handleBookmarkArticle}
+                    handleLoginClick={handleLoginClick}
+                  />
+                );
+              })}
+            </ul>
+            {currentIndex + 3 < articles.length && (
+              <section className="newsresults__load-container">
+                <button
+                  className="newsresults__load-btn"
+                  onClick={handleLoadClick}
+                >
+                  Show more
+                </button>
+              </section>
+            )}
+          </main>
         )
       )}
     </>

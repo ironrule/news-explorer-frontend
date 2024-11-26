@@ -22,20 +22,20 @@ function SavedNews({ handleDeleteArticle }) {
 
   return (
     <>
-      <div className="saved-news">
-        <div className="saved-news__title">Saved articles</div>
-        <div className="saved-news__text">
+      <main className="saved-news">
+        <h1 className="saved-news__title">Saved articles</h1>
+        <h2 className="saved-news__text">
           {currentUser.username.split(/(?<=^\S+)\s/)[0]}, you have{" "}
           {savedArticles.length} saved articles
-        </div>
-        <div className="saved-news__keywords-title">
+        </h2>
+        <p className="saved-news__keywords-title">
           By keywords:
           <span className="saved-news__keywords">
             &nbsp;{keywordsToDisplay || "None available"}
           </span>
-        </div>
-      </div>
-      <div className="saved-news__articles-section">
+        </p>
+      </main>
+      <section className="saved-news__articles-section">
         <ul className="saved-news__cards-list">
           {savedArticles.map((item) => {
             return (
@@ -47,7 +47,7 @@ function SavedNews({ handleDeleteArticle }) {
             );
           })}
         </ul>
-      </div>
+      </section>
     </>
   );
 }

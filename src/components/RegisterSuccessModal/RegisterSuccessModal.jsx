@@ -1,5 +1,4 @@
 import { Modal } from "../Modal/Modal";
-import "./RegisterSuccessModal.css";
 
 function RegisterSuccessModal({
   isOpen,
@@ -14,10 +13,7 @@ function RegisterSuccessModal({
       handleClose={handleClose}
       handleOutsideClick={handleOutsideClick}
     >
-      <button
-        className="register-success-modal__login-btn"
-        onClick={onLoginClick}
-      >
+      <button className="modal__login-btn" onClick={onLoginClick}>
         Sign in
       </button>
     </Modal>

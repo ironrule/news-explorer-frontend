@@ -24,7 +24,7 @@ function Header({
           className="header__logo"
         />
       </Link>
-      <div className="header__right">
+      <nav className="header__nav">
         {isLoggedIn ? (
           <>
             <Link to="/">
@@ -96,8 +96,8 @@ function Header({
             </button>
           </>
         )}
-      </div>
-      <div className="header__mobile-menu" onClick={handleMobileMenuOpen}>
+      </nav>
+      <nav className="header__mobile-menu" onClick={handleMobileMenuOpen}>
         <div
           className={
             theme === "profile"
@@ -112,7 +112,7 @@ function Header({
               : "header__mobile-bar"
           }
         ></div>
-      </div>
+      </nav>
     </header>
   );
 }

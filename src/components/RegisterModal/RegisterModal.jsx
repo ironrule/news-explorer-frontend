@@ -2,7 +2,6 @@ import React, { useContext, useEffect, useState } from "react";
 import { useNavigate } from "react-router-dom";
 import { Modal } from "../Modal/Modal";
 import { useForm } from "../../hooks/useForm";
-import "./RegisterModal.css";
 import * as auth from "../../utils/auth";
 import { setToken } from "../../utils/token";
 import { CurrentUserContext } from "../../contexts/CurrentUserContext";
@@ -13,8 +12,9 @@ const RegisterModal = ({
   onLoginClick,
   handleSubmit,
   buttonText,
+  setActiveModal,
 }) => {
-  const [buttonDisabled, setButtonDisabled] = useState(true);
+  const [buttonDisabled, setButtonDisabled] = useState(false);
   const navigate = useNavigate();
   const { setCurrentUser, setIsLoggedIn } = useContext(CurrentUserContext);
   const initialRegisterFormValues = {
@@ -66,13 +66,13 @@ const RegisterModal = ({
         .then((user) => {
           setCurrentUser(user);
           setIsLoggedIn(true);
+          setActiveModal("register-success-modal");
         })
         .catch((error) => {
           console.error(error);
         })
         .finally(() => {
           setFormValues(initialRegisterFormValues);
-          navigate("/saved-news");
         });
     };
     handleSubmit(makeRequest);
@@ -82,17 +82,17 @@ const RegisterModal = ({
     <Modal title="Sign up" isOpen={isOpen} handleClose={handleClose}>
       <form
         className="modal__form"
-        id="register-modal__form"
-        name="modal-form"
+        id="modal__register-form"
+        name="modal-register-form"
         onSubmit={handleRegisterSubmit}
       >
-        <label htmlFor="register-modal__input-email" className="modal__label">
+        <label htmlFor="modal__input-email" className="modal__label">
           Email
           <input
             type="email"
             className="modal__input"
             name="email"
-            id="register-modal__input-email"
+            id="modal__input-register-email"
             placeholder="Enter email"
             required
             minLength="6"
@@ -104,21 +104,18 @@ const RegisterModal = ({
             className={`modal__input-error ${
               errors.email != "" ? "modal__error_visible" : ""
             }`}
-            id="register-modal__input-email-error"
+            id="modal__input-email-error"
           >
             {errors.email}
           </span>
         </label>
-        <label
-          htmlFor="register-modal__input-password"
-          className="modal__label"
-        >
+        <label htmlFor="modal__input-password" className="modal__label">
           Password
           <input
             type="password"
             className="modal__input"
             name="password"
-            id="register-modal__input-password"
+            id="modal__input-register-password"
             placeholder="Enter password"
             required
             minLength="8"
@@ -130,21 +127,18 @@ const RegisterModal = ({
             className={`modal__input-error ${
               errors.password != "" ? "modal__error_visible" : ""
             }`}
-            id="register-modal__input-password-error"
+            id="modal__input-password-error"
           >
             {errors.password}
           </span>
         </label>
-        <label
-          htmlFor="register-modal__input-username"
-          className="modal__label"
-        >
+        <label htmlFor="modal__input-username" className="modal__label">
           Username
           <input
             type="text"
             className="modal__input"
             name="username"
-            id="register-modal__input-username"
+            id="modal__input-username"
             placeholder="Enter your username"
             minLength="1"
             maxLength="40"
@@ -155,30 +149,23 @@ const RegisterModal = ({
             className={`modal__input-error ${
               errors.username != "" ? "modal__error_visible" : ""
             }`}
-            id="register-modal__input-name-error"
+            id="modal__input-name-error"
           >
             {errors.username}
           </span>
         </label>
-        <div className="register-modal__submit-btn">
-          <button
-            type="submit"
-            className={`register-modal__submit ${
-              buttonDisabled ? "register-modal__submit_disabled" : ""
-            }`}
-            disabled={buttonDisabled}
-          >
-            {buttonText}
-          </button>
-          <button
-            type="button"
-            className="register-modal__login-toggle"
-            onClick={onLoginClick}
-          >
-            <span className="register-modal__login-toggle-text">or</span> Sign
-            in
-          </button>
-        </div>
+        <button
+          type="submit"
+          className={`modal__submit ${
+            buttonDisabled ? "modal__submit_disabled" : ""
+          }`}
+          disabled={buttonDisabled}
+        >
+          {buttonText}
+        </button>
+        <button type="button" className="modal__toggle" onClick={onLoginClick}>
+          <span className="modal__toggle-text">or</span> Sign in
+        </button>
       </form>
     </Modal>
   );

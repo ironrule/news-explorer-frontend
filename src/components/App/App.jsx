@@ -92,7 +92,6 @@ function App() {
   function handleSubmit(request) {
     setIsLoading(true);
     request()
-      .then(closeActiveModal)
       .catch(console.error)
       .finally(() => setIsLoading(false));
   }
@@ -124,7 +123,6 @@ function App() {
                       handleLoginClick={handleLoginClick}
                       handleLogout={handleLogout}
                       setActiveModal={setActiveModal}
-                      closeActiveModal={closeActiveModal}
                       handleMobileMenuOpen={handleMobileMenuOpen}
                     />
                     <SearchForm handleSubmit={handleSubmit} />
@@ -173,6 +171,7 @@ function App() {
           onLoginClick={handleLoginClick}
           buttonText={isLoading ? "Wait..." : "Sign up"}
           handleSubmit={handleSubmit}
+          setActiveModal={setActiveModal}
         />
         <RegisterSuccessModal
           isOpen={activeModal === "register-success-modal"}

@@ -29,7 +29,7 @@ function SearchForm({ handleSubmit }) {
     useForm(initialFormValues);
   const handleSearchSubmit = (e) => {
     e.preventDefault();
-    setSearchPerformed(true);
+    setSearchPerformed(false);
     const makeRequest = () => {
       return NewsApi.getArticles(formValues.search).then((data) => {
         const updatedArticles = data.articles.map((article, index) => {
@@ -41,6 +41,7 @@ function SearchForm({ handleSubmit }) {
           };
         });
         setArticles(updatedArticles);
+        setSearchPerformed(true);
       });
     };
     handleSubmit(makeRequest);
@@ -51,7 +52,7 @@ function SearchForm({ handleSubmit }) {
     <>
       <div className="searchform">
         <div className="searchform__header">
-          <p className="searchform__text">What's going on in the world?</p>
+          <h1 className="searchform__text">What's going on in the world?</h1>
         </div>
         <p className="searchform__description">
           Find the latest news on any topic and save them in your personal

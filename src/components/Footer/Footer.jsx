@@ -6,25 +6,47 @@ import { Link } from "react-router-dom";
 function Footer() {
   return (
     <footer className="footer">
-      <div className="footer__left">
+      <p className="footer__copyright">
         &copy; 2024 Brandon King, Powered by News API
-      </div>
-      <div className="footer__right">
+      </p>
+      <nav className="footer__nav">
         <div className="footer__text-btns">
           <Link to="/">
-            <button className="footer__btn">Home</button>
+            <button type="button" className="footer__btn">
+              Home
+            </button>
           </Link>
-          <button className="footer__btn">TripleTen</button>
+          <a
+            href="https://www.tripleten.com"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button type="button" className="footer__btn">
+              TripleTen
+            </button>
+          </a>
         </div>
         <div className="footer__btns">
-          <button className="footer__btn-icon">
-            <img src={ghlogo} alt="GitHub Logo" />
-          </button>
-          <button className="footer__btn-icon">
-            <img src={fblogo} alt="Facebook Logo" />
-          </button>
+          <a
+            href="https://www.github.com/ironrule"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button type="button" className="footer__btn-icon">
+              <img src={ghlogo} alt="GitHub Logo" />
+            </button>
+          </a>
+          <a
+            href="https://www.facebook.com/brandonking25"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <button type="button" className="footer__btn-icon">
+              <img src={fblogo} alt="Facebook Logo" />
+            </button>
+          </a>
         </div>
-      </div>
+      </nav>
     </footer>
   );
 }

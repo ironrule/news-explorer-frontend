@@ -3,15 +3,18 @@
   align-items: center;
   border-color: white;
   border-bottom: 1px white solid;
+  margin: 0;
+  max-width: 100%;
   max-height: 80px;
 }
 
 .header__logo {
-  margin: 30px 0 26px 104px;
+  margin: 30px 0 26px 30px;
+  padding: 0;
   cursor: pointer;
 }
 
-.header__right {
+.header__nav {
   margin-left: auto;
   margin-right: 104px;
   display: flex;
@@ -28,7 +31,7 @@
   margin-top: 19px;
   margin-bottom: 13px;
   color: white;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   cursor: pointer;
 }
@@ -36,7 +39,7 @@
 .header__text-btn-home {
   border: none;
   border-bottom: 2px solid white;
-  width: 55px;
+  width: 100%;
   height: 74px;
   border-radius: 0;
 }
@@ -66,7 +69,7 @@
 .header__mobile-menu {
   position: absolute;
   top: 24px;
-  left: 280px;
+  right: 24px;
   display: flex;
   flex-direction: column;
   gap: 4px;
@@ -79,7 +82,7 @@
   background-color: white;
 }
 
-/* Header Dark Text for Profile Page */
+/* Header Dark Text for Saved Articles Page */
 .header-dark {
   border-color: rgba(26, 27, 34, 1);
   border-bottom: 1px rgba(26, 27, 34, 1) solid;
@@ -123,9 +126,9 @@
   background-color: black;
 }
 
-@media screen and (max-width: 450px) {
+@media screen and (max-width: 575px) {
   .header {
-    max-width: 320px;
+    max-width: 100%;
     height: 56px;
     align-items: normal;
     margin: 0;
@@ -135,7 +138,7 @@
     max-width: 117px;
     height: 24px;
   }
-  .header__right {
+  .header__nav {
     display: none;
   }
   .header__mobile-menu {
@@ -147,14 +150,18 @@
   }
 }
 
-@media screen and (min-width: 680px) and (max-width: 768px) {
-  .header {
-    margin: 0;
+@media screen and (min-width: 500px) and (max-width: 767px) {
+  .header__nav {
+    margin-right: 20px;
+    justify-content: end;
+    gap: 20px;
   }
-  .header__logo {
-    margin: 0 0 0 40px;
-  }
-  .header__right {
+}
+
+@media screen and (min-width: 768px) and (max-width: 800px) {
+  .header__nav {
     margin-right: 40px;
+    justify-content: end;
+    gap: 42px;
   }
 }

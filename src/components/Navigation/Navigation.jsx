@@ -76,7 +76,7 @@ function Navigation({ handleLoginClick, isOpen, handleClose, handleLogout }) {
                   onClick={handleLogout}
                   src={logoutWhite}
                   alt="Logout button"
-                  className=""
+                  className="nav__logout"
                 />
               </button>
             </>

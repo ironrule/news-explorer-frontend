@@ -18,13 +18,23 @@
   opacity: 1;
 }
 
+.modal__login-btn {
+  border: none;
+  background-color: white;
+  color: blue;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  padding: 0;
+}
+
 .modal__title {
   margin: 0 0 22px;
   font-size: 24px;
   line-height: 28.13px;
   cursor: default;
   font-weight: 500;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 900;
 }
 
@@ -61,7 +71,7 @@
 }
 
 .modal__label {
-  font-family: "Inter";
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   font-size: 12px;
   line-height: 14.52px;
@@ -80,7 +90,7 @@
   max-width: 440px;
   margin-top: 8px;
   margin-bottom: 3px;
-  font-family: "Inter";
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   color: rgba(0, 0, 0, 1);
   font-size: 14px;
@@ -92,10 +102,20 @@
   height: 64px;
   border-radius: 100px;
   border: none;
-  background-color: #000000;
+  background-color: rgba(47, 113, 229, 1);
   color: white;
-  margin-top: 39px;
+  margin: 7px 0 16px;
   cursor: pointer;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  padding: 0px;
+}
+
+.modal__submit_disabled {
+  background-color: lightgray;
+  color: rgba(0, 0, 0, 0.2);
+  border: 1px solid black;
+  cursor: not-allowed;
 }
 
 .modal__submit:hover {
@@ -108,7 +128,7 @@
 }
 
 .modal__input-error {
-  font-family: "Inter";
+  font-family: "Inter", sans-serif;
   font-weight: 400;
   color: red;
   margin-top: 15px;
@@ -123,7 +143,24 @@
   visibility: visible;
 }
 
+.modal__toggle {
+  border: none;
+  background-color: white;
+  color: blue;
+  cursor: pointer;
+  font-family: "Inter", sans-serif;
+  font-weight: 400;
+  padding: 0;
+}
+
+.modal__toggle-text {
+  color: black;
+}
+
 @media screen and (max-width: 450px) {
+  .modal__submit {
+    max-width: 288px;
+  }
   .modal__close {
     height: 24px;
     width: 24px;

@@ -40,7 +40,7 @@
 .nav__close {
   position: absolute;
   top: 26px;
-  left: 278px;
+  right: 24px;
   display: flex;
   flex-direction: column;
   gap: 0px;
@@ -68,12 +68,14 @@
 .nav__text-btn {
   border: 1px solid white;
   border-radius: 100px;
-  width: 288px;
+  width: 90%;
+  min-width: 288px;
   height: 56px;
   background-color: transparent;
-  margin: 12px;
+  margin: 12px 16px 12px 16px;
+  padding: 0;
   color: white;
-  font-family: "Roboto";
+  font-family: "Roboto", sans-serif;
   font-weight: 500;
   cursor: pointer;
 }
@@ -88,4 +90,8 @@
 .header__username-link {
   color: white;
   text-decoration: none;
+}
+
+.nav__logout {
+  width: 24px;
 }
