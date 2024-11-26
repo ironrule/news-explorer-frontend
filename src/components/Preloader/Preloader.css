@@ -1,0 +1,48 @@
+@keyframes spin-counterclockwise {
+  from {
+    transform: rotate(0deg);
+  }
+  to {
+    transform: rotate(-360deg);
+  }
+}
+
+.preloader {
+  max-width: 1440px;
+  height: 282px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(182, 188, 191, 1);
+  background-color: rgba(245, 246, 247, 1);
+}
+
+.preloader__loading-image {
+  position: relative;
+  top: 0;
+  left: 0;
+  border: none;
+  background-color: transparent;
+  margin: 80px auto 0;
+  padding: 0;
+  width: 74px;
+  height: 74px;
+  animation: spin-counterclockwise 1s linear infinite;
+}
+
+.preloader__loading-text {
+  padding: 0;
+  margin: 24px auto 80px;
+}
+
+@media screen and (max-width: 450px) {
+}
+
+@media screen and (min-width: 450px) and (max-width: 768px) {
+  .preloader {
+    max-width: 768px;
+  }
+}

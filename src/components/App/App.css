@@ -1,0 +1,21 @@
+.page {
+  background: white no-repeat url("../../assets/headerbg.png");
+  max-width: 1440px;
+  margin: 0 auto;
+}
+
+.page-dark {
+  background: none;
+}
+
+@media screen and (min-width: 450px) and (max-width: 768px) {
+  .page {
+    max-width: 100%;
+  }
+}
+
+@media screen and (max-width: 450px) {
+  .page {
+    max-width: 100%;
+  }
+}

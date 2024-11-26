@@ -1,0 +1,111 @@
+.saved-news {
+  margin: 40px auto 0;
+}
+
+.saved-news__title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: rgba(26, 27, 34, 0.5);
+  font-size: 18px;
+  line-height: 24px;
+  margin-bottom: 28px;
+  margin-left: 24px;
+}
+
+.saved-news__text {
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: 400;
+  color: rgba(26, 27, 34, 1);
+  font-size: 40px;
+  line-height: 46px;
+  max-width: 530px;
+  margin-bottom: 30px;
+  margin-left: 24px;
+}
+
+.saved-news__keywords-title {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: rgba(26, 27, 34, 1);
+  font-size: 18px;
+  line-height: 24px;
+  margin-left: 24px;
+}
+
+.saved-news__keywords {
+  font-family: "Roboto", sans-serif;
+  font-weight: 700;
+  color: rgba(26, 27, 34, 1);
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.saved-news__articles-section {
+  background-color: rgba(245, 246, 247, 1);
+  margin: 0 auto;
+}
+
+.saved-news__cards-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 40px 0;
+  gap: 16px;
+}
+
+@media screen and (max-width: 450px) {
+  .saved-news {
+    margin: 24px 0 0 16px;
+  }
+  .saved-news__title {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 16px;
+    margin-left: 0;
+  }
+  .saved-news__text {
+    font-size: 30px;
+    line-height: 34px;
+    max-width: 100%;
+    margin-bottom: 16px;
+    margin-left: 0;
+  }
+  .saved-news__keywords-title {
+    padding-bottom: 32px;
+    margin-left: 0;
+  }
+  .saved-news__articles-section {
+    margin-bottom: 64px;
+  }
+  .saved-news__cards-list {
+    padding: 32px 0;
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 768px) {
+  .saved-news {
+    margin: 24px 0 0 40px;
+  }
+  .saved-news__title {
+    font-size: 14px;
+    line-height: 24px;
+    margin-bottom: 16px;
+  }
+  .saved-news__text {
+    font-size: 30px;
+    line-height: 34px;
+    max-width: 336px;
+    margin-bottom: 16px;
+  }
+  .saved-news__keywords-title {
+    padding-bottom: 32px;
+  }
+  .saved-news__articles-section {
+    padding: 0 0 0 40px;
+    margin-bottom: 64px;
+  }
+  .saved-news__cards-list {
+    padding: 32px 0;
+  }
+}

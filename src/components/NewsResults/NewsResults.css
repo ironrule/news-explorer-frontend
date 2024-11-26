@@ -1,0 +1,121 @@
+.newsresults {
+  margin: 0 auto;
+  padding: 0 0 40px 0;
+  background-color: rgba(245, 246, 247, 1);
+}
+
+.newsresults__text {
+  font-family: "Roboto Slab";
+  font-weight: 400;
+  font-size: 40px;
+  line-height: 46px;
+  padding: 40px 7% 64px;
+  color: rgba(26, 27, 34, 1);
+}
+
+.newsresults__cards-list {
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: center;
+  margin: 0 auto;
+  padding: 0;
+  list-style-type: none;
+  gap: 16px;
+}
+
+.newsresults__load-container {
+  display: flex;
+  justify-content: center;
+}
+
+.newsresults__load-btn {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 18px;
+  line-height: 24px;
+  width: 288px;
+  height: 64px;
+  background: none;
+  border: none;
+  color: rgba(26, 27, 34, 1);
+  background-color: rgba(255, 255, 255, 1);
+  border-radius: 64px;
+  margin-top: 64px;
+  margin-bottom: 64px;
+}
+
+.newsresults__load-btn:hover {
+  background-color: rgba(232, 232, 232, 1);
+}
+
+.newsresults__not-found {
+  max-width: 1440px;
+  height: 374px;
+  display: flex;
+  flex-direction: column;
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  font-size: 18px;
+  line-height: 24px;
+  color: rgba(182, 188, 191, 1);
+  background-color: rgba(245, 246, 247, 1);
+}
+
+.newsresults__not-found-image {
+  position: relative;
+  top: 0;
+  left: 0;
+  border: none;
+  background-color: transparent;
+  margin: 80px auto 0;
+  padding: 0;
+  width: 82.5px;
+  height: 82.5px;
+}
+
+.newsresults__not-found-title {
+  font-size: 26px;
+  line-height: 30px;
+  margin: 31.5px auto 16px;
+  color: rgba(26, 27, 34, 1);
+}
+
+.newsresults__not-found-text {
+  font-size: 18px;
+  line-height: 24px;
+  max-width: 240px;
+  max-height: 48px;
+  text-align: center;
+  padding: 0;
+  margin: 0 auto 80px;
+}
+
+@media screen and (max-width: 450px) {
+  .newsresults__text {
+    padding-bottom: 32px;
+    font-size: 30px;
+    line-height: 34px;
+  }
+  .newsresults__not-found {
+    max-width: 320px;
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 768px) {
+  .newsresults {
+    margin: 0 auto;
+    padding: 0 0 40px 0;
+  }
+  .newsresults__cards-list {
+    gap: 8px;
+  }
+  .newsresults__load-btn {
+    margin-top: 32px;
+    margin-bottom: 40px;
+  }
+  .newsresults__text {
+    padding-bottom: 32px;
+    font-size: 30px;
+    line-height: 34px;
+  }
+}

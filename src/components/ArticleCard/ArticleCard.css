@@ -1,0 +1,293 @@
+.card {
+  display: flex;
+  flex-direction: column;
+  width: 400px;
+  max-width: 400px;
+  height: 576px;
+  position: relative;
+  justify-content: center;
+  border-radius: 0 0 14px 14px;
+}
+
+.card__image {
+  width: 400px;
+  height: 272px;
+  object-fit: fill;
+  max-height: 272px;
+  border-radius: 14px 14px 0 0;
+  position: relative;
+}
+
+.card__keyword {
+  position: absolute;
+  border: none;
+  height: 40px;
+  min-width: 87px;
+  top: 24px;
+  left: 24px;
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  align-content: center;
+  background-color: white;
+  color: black;
+  padding: 0 12px;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.card__bookmark {
+  background: url("../../assets/bookmark-normal.svg") no-repeat white center;
+  position: absolute;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 8px;
+  height: 40px;
+  width: 40px;
+  top: 24px;
+  right: 24px;
+}
+
+.card__bookmark:hover {
+  background: url("../../assets/bookmark-hover.svg") no-repeat white center;
+  cursor: pointer;
+}
+
+.card__bookmarked {
+  background: url("../../assets/bookmark-marked.svg") no-repeat white center;
+  position: absolute;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 8px;
+  height: 40px;
+  width: 40px;
+  top: 24px;
+  right: 24px;
+}
+
+.card__bookmark-tooltip {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  align-content: center;
+  position: absolute;
+  height: 40px;
+  width: 159px;
+  top: 24px;
+  right: -5px;
+  transform: translateX(-50%);
+  background-color: white;
+  color: black;
+  padding: 0;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.card__trash {
+  background: url("../../assets/trash-normal.svg") no-repeat white center;
+  position: absolute;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  border: none;
+  border-radius: 8px;
+  height: 40px;
+  width: 40px;
+  top: 24px;
+  right: 24px;
+}
+
+.card__trash:hover {
+  background: url("../../assets/trash-active.svg") no-repeat white center;
+  position: absolute;
+  border: none;
+  border-radius: 8px;
+  height: 40px;
+  width: 40px;
+  top: 24px;
+  right: 24px;
+  cursor: pointer;
+}
+
+.card__trash-tooltip {
+  font-family: "Roboto", sans-serif;
+  font-weight: 500;
+  box-shadow: 2px 2px 2px rgba(0, 0, 0, 0.1);
+  font-size: 12px;
+  line-height: 14px;
+  text-align: center;
+  align-content: center;
+  position: absolute;
+  height: 40px;
+  width: 159px;
+  top: 24px;
+  right: -5px;
+  transform: translateX(-50%);
+  background-color: white;
+  color: black;
+  padding: 0;
+  border-radius: 12px;
+  white-space: nowrap;
+}
+
+.card__container {
+  display: flex;
+  flex-direction: column;
+  position: absolute;
+  background-color: white;
+  border-radius: 14px;
+}
+
+.card__text-section {
+  padding: 0 24px;
+  box-shadow: 0 2px 4px rgba(0, 0, 0, 0.1);
+  border-radius: 0 0 14px 14px;
+  height: 304px;
+  overflow: hidden;
+}
+
+.card__date {
+  color: rgba(182, 188, 191, 1);
+  font-size: 18px;
+  line-height: 24px;
+}
+
+.card__name {
+  margin: 0;
+  background-color: white;
+  border-radius: 4px;
+  color: rgba(0, 0, 0, 0.6);
+  cursor: pointer;
+  font-family: "Roboto Slab", sans-serif;
+  font-weight: 400;
+  font-size: 26px;
+  line-height: 30px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 2;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+}
+
+.card__description {
+  font-family: "Roboto", sans-serif;
+  font-weight: 400;
+  color: rgba(26, 27, 34, 1);
+  font-size: 16px;
+  line-height: 22px;
+  overflow: hidden;
+  text-overflow: ellipsis;
+  display: -webkit-box;
+  line-clamp: 4;
+  -webkit-line-clamp: 4;
+  -webkit-box-orient: vertical;
+}
+
+.card__source-name {
+  color: rgba(182, 188, 191, 1);
+}
+
+@media screen and (max-width: 450px) {
+  .card {
+    width: 288px;
+    max-width: 288px;
+    height: 440px;
+  }
+  .card__image {
+    width: 288px;
+    height: 196px;
+    max-height: 196px;
+  }
+  .card__text-section {
+    height: 244px;
+  }
+  .card__description {
+    line-clamp: 2;
+    -webkit-line-clamp: 2;
+  }
+  .card__trash {
+    top: 16px;
+    right: 16px;
+  }
+  .card__bookmark {
+    top: 16px;
+    right: 16px;
+  }
+  .card__bookmarked {
+    top: 16px;
+    right: 16px;
+  }
+  .card__bookmark-tooltip {
+    top: 16px;
+    right: -16px;
+  }
+  .card__keyword {
+    top: 16px;
+    left: 16px;
+  }
+  .card__trash:hover {
+    top: 16px;
+    right: 16px;
+  }
+}
+
+@media screen and (min-width: 450px) and (max-width: 768px) {
+  .card {
+    width: 224px;
+    max-width: 224px;
+    height: 420px;
+  }
+  .card__image {
+    width: 224px;
+    height: 150px;
+    max-height: 150px;
+  }
+  .card__bookmark {
+    top: 8px;
+    right: 8px;
+  }
+  .card__bookmarked {
+    top: 8px;
+    right: 8px;
+  }
+  .card__keyword {
+    top: 8px;
+    left: 8px;
+  }
+  .card__bookmark {
+    top: 8px;
+    right: 8px;
+  }
+  .card__bookmarked {
+    top: 8px;
+    right: 8px;
+  }
+  .card__bookmark-tooltip {
+    top: 8px;
+    right: -24px;
+  }
+  .card__trash {
+    top: 8px;
+    right: 8px;
+  }
+  .card__trash:hover {
+    top: 8px;
+    right: 8px;
+  }
+  .card__trash-tooltip {
+    top: 8px;
+    right: -24px;
+  }
+  .card__text-section {
+    padding: 0 16px;
+    height: 270px;
+  }
+  .card__name {
+    font-size: 22px;
+    line-height: 24px;
+  }
+}
