@@ -18,8 +18,9 @@ The user's Saved Articles page will contain their articles as well as a list of 
 
 The site is currently self-hosted on my server at the following address:
 
-[MAIN: Link to the self-hosted project site](https://news.onelastcup.com/)
-[BACKUP: Link to the self-hosted project site](http://news-explorer.infy.uk)
+- [MAIN: Link to the self-hosted project site](https://news.onelastcup.com/)
+
+- [BACKUP: Link to the self-hosted project site](http://news-explorer.infy.uk)
 
 You can review the site in DevTools and inspect each element, as well as change page sizes to see how it will look on different devices. As we were given 3 designs in Figma, some of the different sizes had to be styled based on what looked or worked best for the screen size.
 
@@ -33,19 +34,19 @@ After loading this design, I was able to export the necessary images for my proj
 
 Below are links to the images of my site while viewing in DevTools to see the different sizes and how the site changes to adapt to them.
 
-[Desktop Screenshot](./Readme/Desktop.png)
+- [Desktop Screenshot](./Readme/Desktop.png)
 
-[Desktop Login Modal](./Readme/LoginModal.png)
+- [Desktop Login Modal](./Readme/LoginModal.png)
 
-[Desktop Article Card](./Readme/ArticleCard.png)
+- [Desktop Article Card](./Readme/ArticleCard.png)
 
-[Saved Articles Function](./Readme/SavedArticles.png)
+- [Saved Articles Function](./Readme/SavedArticles.png)
 
-[Mobile Site 320 pixel width](./Readme/MobileSite.png)
+- [Mobile Site 320 pixel width](./Readme/MobileSite.png)
 
-[Mobile Menu](./Readme/MobileMenu.png)
+- [Mobile Menu](./Readme/MobileMenu.png)
 
-[Mobile Menu Logged In](./Readme/MobileMenuLoggedIn.png)
+- [Mobile Menu Logged In](./Readme/MobileMenuLoggedIn.png)
 
 **Forms**
 
